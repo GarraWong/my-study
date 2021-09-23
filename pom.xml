@@ -9,6 +9,7 @@
 
     <modules>
         <module>security-study</module>
+        <module>redisdemo</module>
     </modules>
 
     <packaging>pom</packaging>
