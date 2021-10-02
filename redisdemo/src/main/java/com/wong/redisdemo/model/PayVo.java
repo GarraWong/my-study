@@ -1,9 +1,6 @@
 package com.wong.redisdemo.model;
 
-import com.wong.redisdemo.annotations.TradeId;
-import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.NotBlank;
+import com.wong.redisdemo.annotations.*;
 
 /**
  * 输入类描述
@@ -12,16 +9,21 @@ import javax.validation.constraints.NotBlank;
  * @version : 1.0
  * Create in 2021/9/26 9:53
  */
+@VehplateColor(required = false)
 public class PayVo {
     @TradeId
     private String tradeid;
-    @NotBlank(message = "业务方编号不能为空")
-    @Length(min = 10,max = 10,message = "业务方编号必须为10位")
+    @BusId
     private String busid;   //	业务方编号			是
     private String listno;	//通行流水号	由查询接口获取的返回值
+    @Amount(required = true)
     private Long amount;	// 金额 单位分
+    @Time(required = true)
     private String entime;	// 入场时间
+    @Time(required = false)
     private String extime;  //	出场时间
+    private String vehplate;    //车牌号
+    private Integer platecolor; //车牌颜色
     private String remark;  //	金额备注
     private String remark1; //	备用
 
@@ -34,6 +36,8 @@ public class PayVo {
         sb.append(", amount=").append(amount);
         sb.append(", entime='").append(entime).append('\'');
         sb.append(", extime='").append(extime).append('\'');
+        sb.append(", vehplate='").append(vehplate).append('\'');
+        sb.append(", platecolor=").append(platecolor);
         sb.append(", remark='").append(remark).append('\'');
         sb.append(", remark1='").append(remark1).append('\'');
         sb.append('}');
@@ -102,5 +106,21 @@ public class PayVo {
 
     public void setRemark1(String remark1) {
         this.remark1 = remark1;
+    }
+
+    public String getVehplate() {
+        return vehplate;
+    }
+
+    public void setVehplate(String vehplate) {
+        this.vehplate = vehplate;
+    }
+
+    public Integer getPlatecolor() {
+        return platecolor;
+    }
+
+    public void setPlatecolor(Integer platecolor) {
+        this.platecolor = platecolor;
     }
 }

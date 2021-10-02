@@ -1,15 +1,18 @@
 package com.wong.redisdemo.config;
 
 import cn.hutool.core.util.StrUtil;
+import com.wong.redisdemo.controller.ValidatorController;
+import com.wong.redisdemo.model.PayVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.util.Set;
 
 /**
  * 输入类描述
@@ -25,14 +28,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<?> handleConstranitException(ConstraintViolationException e, HttpServletRequest request) {
-        log.info("触发了校验异常....{}", e.getMessage());
+        log.info("触发了校验异常....");
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        StringBuilder builder = new StringBuilder();
+        violations.forEach(constraintViolation -> builder.append(constraintViolation.getMessage()).append(","));
+        log.info("异常信息:{}", builder.toString());
         if (request != null && StrUtil.isNotBlank(request.getHeader("myheader"))) {
-            log.info("自定义请求头是[myheader={}]", request.getHeader("myheader"));
-            log.info("自定义请求参数[myparam={}]",request.getParameter("myparam") );
-            log.info("自定义请求参数[tradeid={}]",request.getParameter("tradeid") );
-            log.info("自定义请求参数[busid={}]",request.getParameter("busid") );
-            log.info("自定义请求参数[listno={}]",request.getParameter("listno") );
-            log.info("自定义请求参数[amount={}]",request.getParameter("amount") );
+            PayVo payVo = ValidatorController.getBinfile(request, PayVo.class);
+            log.info("统一异常处理器payvo请求参数值:{}", payVo.toString());
         }
         return ResponseEntity.ok("错了");
     }
