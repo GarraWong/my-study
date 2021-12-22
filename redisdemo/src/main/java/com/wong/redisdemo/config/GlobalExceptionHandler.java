@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
@@ -40,5 +41,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.ok("错了");
     }
 
-
+    /**
+     * 处理上传文件 未接收到文件 异常
+     */
+    @ExceptionHandler(MissingServletRequestPartException.class)
+    public String handleMissingServletRequestPartException(MissingServletRequestPartException e) {
+        log.error(e.getMessage(), e);
+        String message = "缺少文件参数:" + e.getRequestPartName();
+        return message;
+    }
 }

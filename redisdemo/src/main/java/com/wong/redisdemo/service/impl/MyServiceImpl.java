@@ -5,7 +5,9 @@ import com.wong.redisdemo.model.NettyDemo;
 import com.wong.redisdemo.service.MyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.Map;
 
 /**
@@ -14,9 +16,17 @@ import java.util.Map;
  * @author : wangyumou
  * @date : 2021/9/23 16:30
  */
+@Service
 public class MyServiceImpl implements MyService {
 
     private static final Logger logger = LoggerFactory.getLogger(MyServiceImpl.class);
+
+    @PostConstruct
+    public void init() {
+        logger.info("MyServiceImpl实例化开始");
+        logger.info("MyServiceImpl实例化完成");
+    }
+
 
     @Override
     public Integer result(String plate) {

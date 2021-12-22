@@ -1,0 +1,12 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: provider
+  cloud:
+    nacos:
+      config:
+        # 配置中心地址
+        server-addr: localhost:8848
+      discovery:
+        server-addr: localhost:8848

@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wang.openfeign.api.factory.RemoteProviderFallback
