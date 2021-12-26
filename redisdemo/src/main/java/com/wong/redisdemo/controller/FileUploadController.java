@@ -1,11 +1,16 @@
 package com.wong.redisdemo.controller;
 
+import cn.hutool.core.io.FileUtil;
 import com.wong.redisdemo.model.UploadFile;
 import com.wong.redisdemo.service.MyService;
 import com.wong.redisdemo.utils.ServletUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +19,11 @@ import org.springframework.web.multipart.support.StandardMultipartHttpServletReq
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
 import java.util.List;
 import java.util.Queue;
 
@@ -28,6 +37,7 @@ import java.util.Queue;
 @RestController
 @RequestMapping("/file")
 @Validated
+@CrossOrigin
 public class FileUploadController {
 
     @Autowired
@@ -78,6 +88,31 @@ public class FileUploadController {
 //            str = null;
 //        }
         return str;
+    }
+
+    @GetMapping("/fileuse")
+    public ResponseEntity<?> fileUse() throws Exception{
+        logger.info("收到请求");
+        File file = new File("C:\\Users\\WangYumou\\Desktop\\123.jpeg");
+        FileInputStream is = new FileInputStream(file);
+        long length = file.length();
+        byte[] bytes = new byte[(int) length];
+        is.read(bytes);
+        is.close();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Content-Disposition", "attachment; filename=" + new String(file.getAbsolutePath().getBytes(StandardCharsets.UTF_8), "ISO8859-1"));
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+        headers.add("Last-Modified", new Date().toString());
+        headers.add("file-type", FileUtil.getSuffix(file));
+        headers.add("ETag", String.valueOf(System.currentTimeMillis()));
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentLength(length)
+                .contentType(MediaType.parseMediaType("application/octet-stream"))
+                .body(new FileSystemResource(file));
     }
 
 
