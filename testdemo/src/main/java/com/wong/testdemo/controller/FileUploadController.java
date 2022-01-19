@@ -126,8 +126,8 @@ public class FileUploadController {
     }
 
     @PostMapping("/batchinsert")
-    public String batchInsert(@RequestParam("vos") BatchUploadVo uploadVo) {
-        uploadVo.getVos().forEach(e->{
+    public String batchInsert(BatchUploadVo uploadVo) {
+        uploadVo.getVos().forEach(e -> {
             logger.info("文件名:{},关键字:{},正文:{},适用范围:{},原始文件名:{},原始文件大小:{}"
                     , e.getFilename(), e.getKeyword(), e.getText(), e.getScopes(), e.getAttachment().getOriginalFilename(), e.getAttachment().getSize());
         });
