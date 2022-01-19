@@ -2,3 +2,4 @@
 1、spring security
 2、hibernate-validation
 3、redis
+4、git使用
