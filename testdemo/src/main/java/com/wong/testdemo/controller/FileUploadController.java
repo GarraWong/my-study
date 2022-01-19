@@ -2,6 +2,7 @@ package com.wong.testdemo.controller;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
+import com.wong.testdemo.model.BatchUploadVo;
 import com.wong.testdemo.model.UploadFile;
 import com.wong.testdemo.service.MyService;
 import com.wong.testdemo.utils.ServletUtils;
@@ -121,6 +122,15 @@ public class FileUploadController {
 
     @GetMapping("/say")
     public String sayHi(@RequestParam int number) {
+        return "number" + "hello";
+    }
+
+    @PostMapping("/batchinsert")
+    public String batchInsert(@RequestParam("vos") BatchUploadVo uploadVo) {
+        uploadVo.getVos().forEach(e->{
+            logger.info("文件名:{},关键字:{},正文:{},适用范围:{},原始文件名:{},原始文件大小:{}"
+                    , e.getFilename(), e.getKeyword(), e.getText(), e.getScopes(), e.getAttachment().getOriginalFilename(), e.getAttachment().getSize());
+        });
         return "number" + "hello";
     }
 

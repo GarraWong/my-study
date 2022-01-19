@@ -1,6 +1,5 @@
 package com.wong.testdemo.model;
 
-import com.wong.redisdemo.annotations.*;
 import com.wong.testdemo.annotations.*;
 
 /**

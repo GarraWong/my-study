@@ -100,6 +100,20 @@
             <version>1.4</version>
         </dependency>
         <!--webservice 依赖 end-->
+
+        <dependency>
+            <groupId>com.deepoove</groupId>
+            <artifactId>poi-tl</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j-JAXB-Internal</artifactId>
+            <version>8.3.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -131,7 +145,7 @@
         </plugins>
         <!--打包最后的包名-->
         <finalName>testdemo</finalName>
-
     </build>
+
 
 </project>
