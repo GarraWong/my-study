@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.util.List;
-import java.util.Set;
 
 /**
  * 功能类测试代码
@@ -19,17 +18,34 @@ import java.util.Set;
 @SpringBootTest(classes = Testdemo.class)
 public class FunctionTest {
 
+    //源视频目录
+    public static final String PATH = "/Users/wangyumou/Desktop/origin";
+    //存放的目标视频目录
+    public static final String TARGET_PATH = "/Users/wangyumou/Desktop/target";
 
     /**
      * 测试获取给定一个文件夹，得到所有的文件。打印其全部原始文件名
      */
     @Test
     public void testGetDirectoryAllFiles() {
-        //文件夹目录
-        String path = "/Users/wangyumou/Desktop/test";
-        List<File> files = FileUtil.loopFiles(path, FunctionTest::isRuledMp4File);
+        List<File> files = FileUtil.loopFiles(PATH, FunctionTest::isRuledMp4File);
         System.out.println("文件数量:" + files.size());
         files.forEach(e-> System.out.println(e.getName()));
+    }
+
+    /**
+     * 重命名 去掉空格
+     */
+    @Test
+    public void testRenameVideos() {
+        // 遍历所有文件，去掉文件名中的所有空格
+        List<File> loopFiles = FileUtil.loopFiles(PATH, FunctionTest::isMp4);
+        loopFiles.forEach(e -> System.out.println("修改前文件名:" + e.getName()));
+        loopFiles.forEach(e -> FileUtil.rename(e, FileUtil.getPrefix(e.getName().replace(" ", "")), true, true));
+        System.out.println("<================>");
+        //再次遍历 打印名字
+        List<File> loop2Files = FileUtil.loopFiles(PATH, FunctionTest::isMp4);
+        loop2Files.forEach(e -> System.out.println("修改后文件名:" + e.getName()));
     }
 
     /**
@@ -38,14 +54,12 @@ public class FunctionTest {
      */
     @Test
     public void testRemoveFileAndSortByName() {
-        //文件夹目录
-        String path = "/Users/wangyumou/Desktop/origin";
-        String targetPath = "/Users/wangyumou/Desktop/target";
-
-        List<File> files = FileUtil.loopFiles(path, FunctionTest::isRuledMp4File);
-        System.out.println("文件数量:" + files.size());
+        // 遍历文件
+        List<File> files = FileUtil.loopFiles(PATH, FunctionTest::isRuledMp4File);
+        System.out.println("更改文件位置时文件数量:" + files.size());
+        files.forEach(e -> System.out.println("全部文件名:" + e.getName()));
         files.forEach(e-> {
-            File authorDirFile = new File(targetPath + "/" + getAuthorName(e.getName()));
+            File authorDirFile = new File(TARGET_PATH + "/" + getAuthorName(e.getName()));
             File targetFile = new File(authorDirFile.getAbsolutePath() + "/" + e.getName());
             FileUtil.copy(e, targetFile, false);
         });
