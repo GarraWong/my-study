@@ -1,4 +1,4 @@
-package com.wong.testdemo.model;
+package com.wong.testdemo.model.validator;
 
 import com.wong.testdemo.annotations.*;
 
@@ -15,11 +15,11 @@ public class PayVo {
     private String tradeid;
     @BusId
     private String busid;   //	业务方编号			是
-    private String listno;	//通行流水号	由查询接口获取的返回值
+    private String listno;    //通行流水号	由查询接口获取的返回值
     @Amount(required = true)
-    private Long amount;	// 金额 单位分
+    private Long amount;    // 金额 单位分
     @Time(required = true)
-    private String entime;	// 入场时间
+    private String entime;    // 入场时间
     @Time(required = false)
     private String extime;  //	出场时间
     private String vehplate;    //车牌号

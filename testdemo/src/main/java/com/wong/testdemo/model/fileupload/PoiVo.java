@@ -1,4 +1,4 @@
-package com.wong.testdemo.model;
+package com.wong.testdemo.model.fileupload;
 
 /**
  * 这是类注释 完善它

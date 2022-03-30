@@ -1,6 +1,4 @@
-package com.wong.testdemo.model;
-
-import org.springframework.web.multipart.MultipartFile;
+package com.wong.testdemo.model.fileupload;
 
 import java.util.List;
 

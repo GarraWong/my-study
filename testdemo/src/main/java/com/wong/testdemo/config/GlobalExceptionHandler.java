@@ -2,7 +2,7 @@ package com.wong.testdemo.config;
 
 import cn.hutool.core.util.StrUtil;
 import com.wong.testdemo.controller.ValidatorController;
-import com.wong.testdemo.model.PayVo;
+import com.wong.testdemo.model.validator.PayVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

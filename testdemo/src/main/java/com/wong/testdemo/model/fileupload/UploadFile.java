@@ -1,4 +1,4 @@
-package com.wong.testdemo.model;
+package com.wong.testdemo.model.fileupload;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;

@@ -1,6 +1,6 @@
 package com.wong.testdemo.service;
 
-import com.wong.testdemo.model.PayVo;
+import com.wong.testdemo.model.validator.PayVo;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;

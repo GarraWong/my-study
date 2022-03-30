@@ -2,8 +2,8 @@ package com.wong.testdemo.controller;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
-import com.wong.testdemo.model.BatchUploadVo;
-import com.wong.testdemo.model.UploadFile;
+import com.wong.testdemo.model.fileupload.BatchUploadVo;
+import com.wong.testdemo.model.fileupload.UploadFile;
 import com.wong.testdemo.service.MyService;
 import com.wong.testdemo.utils.ServletUtils;
 import org.slf4j.Logger;
@@ -132,13 +132,6 @@ public class FileUploadController {
                     , e.getFilename(), e.getKeyword(), e.getText(), e.getScopes(), e.getAttachment().getOriginalFilename(), e.getAttachment().getSize());
         });
         return "number" + "hello";
-    }
-
-    public static void main(String[] args) {
-        BufferedInputStream in = FileUtil.getInputStream("/1.doc");
-        BufferedOutputStream out = FileUtil.getOutputStream("/1.docx");
-        long copySize = IoUtil.copy(in, out, IoUtil.DEFAULT_BUFFER_SIZE);
-        System.out.println("搞完了");
     }
 
 }

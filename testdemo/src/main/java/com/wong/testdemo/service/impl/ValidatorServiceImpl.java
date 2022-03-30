@@ -1,6 +1,6 @@
 package com.wong.testdemo.service.impl;
 
-import com.wong.testdemo.model.PayVo;
+import com.wong.testdemo.model.validator.PayVo;
 import com.wong.testdemo.service.ValidatorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
