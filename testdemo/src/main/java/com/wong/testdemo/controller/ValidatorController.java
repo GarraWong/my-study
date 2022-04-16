@@ -1,6 +1,7 @@
 package com.wong.testdemo.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.wong.testdemo.model.validator.BaseList;
 import com.wong.testdemo.model.validator.PayVo;
 import com.wong.testdemo.model.validator.SubClass;
 import com.wong.testdemo.model.validator.TestPath;
@@ -50,6 +51,12 @@ public class ValidatorController {
     public String testInheritValidate(@Valid SubClass vo) {
         logger.info("接收参数:{}", vo);
         return vo.toString();
+    }
+
+    @PostMapping("/listtest")
+    public String testList(@Valid @RequestBody BaseList baseList) {
+        logger.debug("接受参数:{}", baseList);
+        return baseList.toString();
     }
 
     @PutMapping("/path/{flag}")

@@ -60,6 +60,7 @@ public class FunctionTest {
     public void testRenameVideos() {
         // 遍历所有文件，去掉文件名中的所有空格
         List<File> loopFiles = FileUtil.loopFiles(PATH, FunctionTest::isMp4);
+        System.out.println("文件数量为:" + loopFiles.size());
         loopFiles.forEach(e -> System.out.println("修改前文件名:" + e.getName()));
         loopFiles.forEach(e -> FileUtil.rename(e, FileUtil.getPrefix(e.getName().replace(" ", "")), true, true));
         System.out.println("<================>");
