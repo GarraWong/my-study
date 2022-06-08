@@ -1,9 +1,6 @@
 package com.wong.testdemo.superclass.service.impl;
 
-import com.wong.testdemo.service.IPoiService;
-import com.wong.testdemo.service.ValidatorService;
 import com.wong.testdemo.superclass.service.BusinessTypeOne;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,8 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class BusinessTypeOneImpl extends BaseServiceImpl implements BusinessTypeOne {
 
-    @Autowired
-    private ValidatorService validatorService;
 
     @Override
     public String typeOneTest() {

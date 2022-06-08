@@ -26,12 +26,13 @@ public abstract class BaseServiceImpl implements IBaseService {
     @Override
     public String baseSelect(boolean flag) {
         String name = validatorService.getName(String.valueOf(flag));
+        poiService.docxToHtml("aaa");
         logger.debug("baseSelect:{}", name);
         return "baseSelect:" + validatorService.toString() + poiService.toString();
     }
 
     @Override
-    public String baseInsert() {
+    public final String baseInsert() {
         logger.debug("baseInsert==>this : {}", this);
         if (validatorService == null || poiService == null) {
             logger.error("baseInsert,为空");

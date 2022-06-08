@@ -11,6 +11,7 @@
         <module>security-study</module>
         <module>testdemo</module>
         <module>open-feign</module>
+        <module>testformac</module>
     </modules>
 
     <packaging>pom</packaging>

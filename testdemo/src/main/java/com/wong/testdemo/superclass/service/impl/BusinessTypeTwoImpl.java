@@ -1,7 +1,5 @@
 package com.wong.testdemo.superclass.service.impl;
 
-import com.wong.testdemo.service.IPoiService;
-import com.wong.testdemo.service.ValidatorService;
 import com.wong.testdemo.superclass.service.BusinessTypeTwo;
 import org.springframework.stereotype.Service;
 

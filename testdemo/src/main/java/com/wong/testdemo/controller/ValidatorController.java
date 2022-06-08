@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.EventListener;
 
 /**
  * 输入类描述
@@ -93,7 +94,7 @@ public class ValidatorController {
         try {
             t = JSON.parseObject(str, type);
         } catch (Exception e) {
-            logger.error("getBinfile方法转换json对象失败,待转换字符串:{%s},目标转换类型:{%s},文件名:{%s}",
+            logger.error("getBinfile方法转换json对象失败,待转换字符串:{},目标转换类型:{},文件名:{}",
                     str, type.getName(), request.getParameter("filename"));
             throw new RuntimeException("转换文件内容为json发生异常");
         }
