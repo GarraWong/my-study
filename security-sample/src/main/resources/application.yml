@@ -1,0 +1,6 @@
+server:
+  port: 8081
+
+idass:
+  dev: true
+  idass-server: http://localhost:8080
