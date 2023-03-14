@@ -11,6 +11,7 @@
         <module>test-sample</module>
         <module>dynamic-datasource-sample</module>
         <module>mybatis-sample</module>
+        <module>security-sample</module>
     </modules>
 
     <packaging>pom</packaging>
