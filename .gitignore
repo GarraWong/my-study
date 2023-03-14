@@ -35,4 +35,4 @@ build/
 
 ### nodeJs  日志文件
 node_modules/
-*.log
+*.limitType
