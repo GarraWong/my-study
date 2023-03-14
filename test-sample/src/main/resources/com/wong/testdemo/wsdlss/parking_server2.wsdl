@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="parking_server"
+ targetNamespace="http://tempuri.org/"
+ xmlns:tns="http://tempuri.org/"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns1="http://tempuri.org/ns1.xsd"
+ xmlns:ns="http://tempuri.org/"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="http://tempuri.org/ns1.xsd"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns1="http://tempuri.org/ns1.xsd"
+  xmlns:ns="http://tempuri.org/"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://tempuri.org/"/>
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ </schema>
+
+ <schema targetNamespace="http://tempuri.org/"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns1="http://tempuri.org/ns1.xsd"
+  xmlns:ns="http://tempuri.org/"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <complexType name="ParaRequest"><!-- ParaRequest -->
+
+   <sequence>
+     <element name="psBuff" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ParaRequest::psBuff -->
+   </sequence>
+  </complexType>
+  <complexType name="ParaResponse"><!-- ParaResponse -->
+
+   <sequence>
+     <element name="psBuff" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ParaResponse::psBuff -->
+   </sequence>
+  </complexType>
+ </schema>
+
+</types>
+
+<message name="UploadParkingOperatorInfoRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__UploadParkingOperatorInfo::stInBuf -->
+</message>
+
+<message name="UploadParkingOperatorInfoResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__UploadParkingOperatorInfo::stOutBuf -->
+</message>
+
+<message name="UploadParkingInfoRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__UploadParkingInfo::stInBuf -->
+</message>
+
+<message name="UploadParkingInfoResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__UploadParkingInfo::stOutBuf -->
+</message>
+
+<message name="UploadParkingLaneInfoRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__UploadParkingLaneInfo::stInBuf -->
+</message>
+
+<message name="UploadParkingLaneInfoResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__UploadParkingLaneInfo::stOutBuf -->
+</message>
+
+<message name="UploadParkingContrastRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__UploadParkingContrast::stInBuf -->
+</message>
+
+<message name="UploadParkingContrastResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__UploadParkingContrast::stOutBuf -->
+</message>
+
+<message name="InParkingVehicleRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__InParkingVehicle::stInBuf -->
+</message>
+
+<message name="InParkingVehicleResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__InParkingVehicle::stOutBuf -->
+</message>
+
+<message name="JdgVehicleStateListRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__JdgVehicleStateList::stInBuf -->
+</message>
+
+<message name="JdgVehicleStateListResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__JdgVehicleStateList::stOutBuf -->
+</message>
+
+<message name="JdgParkingDeductObuPassRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__JdgParkingDeductObuPass::stInBuf -->
+</message>
+
+<message name="JdgParkingDeductObuPassResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__JdgParkingDeductObuPass::stOutBuf -->
+</message>
+
+<message name="DealParkingDeductObuPassRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__DealParkingDeductObuPass::stInBuf -->
+</message>
+
+<message name="DealParkingDeductObuPassResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__DealParkingDeductObuPass::stOutBuf -->
+</message>
+
+<message name="RefundParkingObuPassRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__RefundParkingObuPass::stInBuf -->
+</message>
+
+<message name="RefundParkingObuPassResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__RefundParkingObuPass::stOutBuf -->
+</message>
+
+<message name="JdgVehicleDeductPlatePayRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__JdgVehicleDeductPlatePay::stInBuf -->
+</message>
+
+<message name="JdgVehicleDeductPlatePayResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__JdgVehicleDeductPlatePay::stOutBuf -->
+</message>
+
+<message name="DealVehicleDeductPlatePayRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__DealVehicleDeductPlatePay::stInBuf -->
+</message>
+
+<message name="DealVehicleDeductPlatePayResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__DealVehicleDeductPlatePay::stOutBuf -->
+</message>
+
+<message name="RefundVehiclePlatePayRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__RefundVehiclePlatePay::stInBuf -->
+</message>
+
+<message name="RefundVehiclePlatePayResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__RefundVehiclePlatePay::stOutBuf -->
+</message>
+
+<message name="QueryParkingDeductStatusRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__QueryParkingDeductStatus::stInBuf -->
+</message>
+
+<message name="QueryParkingDeductStatusResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__QueryParkingDeductStatus::stOutBuf -->
+</message>
+
+<message name="QueryParkingRefundStatusRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__QueryParkingRefundStatus::stInBuf -->
+</message>
+
+<message name="QueryParkingRefundStatusResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__QueryParkingRefundStatus::stOutBuf -->
+</message>
+
+<message name="QueryParkingTransListRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__QueryParkingTransList::stInBuf -->
+</message>
+
+<message name="QueryParkingTransListResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__QueryParkingTransList::stOutBuf -->
+</message>
+
+<message name="QueryParkingClearingTtlRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__QueryParkingClearingTtl::stInBuf -->
+</message>
+
+<message name="QueryParkingClearingTtlResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__QueryParkingClearingTtl::stOutBuf -->
+</message>
+
+<message name="TyfsPayAdvanceOrderRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__TyfsPayAdvanceOrder::stInBuf -->
+</message>
+
+<message name="TyfsPayAdvanceOrderResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__TyfsPayAdvanceOrder::stOutBuf -->
+</message>
+
+<message name="TyfsPayGetSecurCodeRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__TyfsPayGetSecurCode::stInBuf -->
+</message>
+
+<message name="TyfsPayGetSecurCodeResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__TyfsPayGetSecurCode::stOutBuf -->
+</message>
+
+<message name="TyfsPayConfirmOrderRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__TyfsPayConfirmOrder::stInBuf -->
+</message>
+
+<message name="TyfsPayConfirmOrderResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__TyfsPayConfirmOrder::stOutBuf -->
+</message>
+
+<message name="TyfsPayRevokedOrderRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__TyfsPayRevokedOrder::stInBuf -->
+</message>
+
+<message name="TyfsPayRevokedOrderResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__TyfsPayRevokedOrder::stOutBuf -->
+</message>
+
+<message name="TyfsPayQueryOrderStatusRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__TyfsPayQueryOrderStatus::stInBuf -->
+</message>
+
+<message name="TyfsPayQueryOrderStatusResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__TyfsPayQueryOrderStatus::stOutBuf -->
+</message>
+
+<message name="TyfsPayQueryShopTransListRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__TyfsPayQueryShopTransList::stInBuf -->
+</message>
+
+<message name="TyfsPayQueryShopTransListResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__TyfsPayQueryShopTransList::stOutBuf -->
+</message>
+
+<message name="TyfsPayQueryShopClearingTtlRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__TyfsPayQueryShopClearingTtl::stInBuf -->
+</message>
+
+<message name="TyfsPayQueryShopClearingTtlResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__TyfsPayQueryShopClearingTtl::stOutBuf -->
+</message>
+
+<message name="JdgVehicleEtcpayStateRequest">
+ <part name="stInBuf" type="ns:ParaRequest"/><!-- ns__JdgVehicleEtcpayState::stInBuf -->
+</message>
+
+<message name="JdgVehicleEtcpayStateResponse">
+ <part name="stOutBuf" type="ns:ParaResponse"/><!-- ns__JdgVehicleEtcpayState::stOutBuf -->
+</message>
+
+<portType name="parking_serverPortType">
+ <operation name="UploadParkingOperatorInfo">
+  <documentation>Service definition of function ns__UploadParkingOperatorInfo</documentation>
+  <input message="tns:UploadParkingOperatorInfoRequest"/>
+  <output message="tns:UploadParkingOperatorInfoResponse"/>
+ </operation>
+ <operation name="UploadParkingInfo">
+  <documentation>Service definition of function ns__UploadParkingInfo</documentation>
+  <input message="tns:UploadParkingInfoRequest"/>
+  <output message="tns:UploadParkingInfoResponse"/>
+ </operation>
+ <operation name="UploadParkingLaneInfo">
+  <documentation>Service definition of function ns__UploadParkingLaneInfo</documentation>
+  <input message="tns:UploadParkingLaneInfoRequest"/>
+  <output message="tns:UploadParkingLaneInfoResponse"/>
+ </operation>
+ <operation name="UploadParkingContrast">
+  <documentation>Service definition of function ns__UploadParkingContrast</documentation>
+  <input message="tns:UploadParkingContrastRequest"/>
+  <output message="tns:UploadParkingContrastResponse"/>
+ </operation>
+ <operation name="InParkingVehicle">
+  <documentation>Service definition of function ns__InParkingVehicle</documentation>
+  <input message="tns:InParkingVehicleRequest"/>
+  <output message="tns:InParkingVehicleResponse"/>
+ </operation>
+ <operation name="JdgVehicleStateList">
+  <documentation>Service definition of function ns__JdgVehicleStateList</documentation>
+  <input message="tns:JdgVehicleStateListRequest"/>
+  <output message="tns:JdgVehicleStateListResponse"/>
+ </operation>
+ <operation name="JdgParkingDeductObuPass">
+  <documentation>Service definition of function ns__JdgParkingDeductObuPass</documentation>
+  <input message="tns:JdgParkingDeductObuPassRequest"/>
+  <output message="tns:JdgParkingDeductObuPassResponse"/>
+ </operation>
+ <operation name="DealParkingDeductObuPass">
+  <documentation>Service definition of function ns__DealParkingDeductObuPass</documentation>
+  <input message="tns:DealParkingDeductObuPassRequest"/>
+  <output message="tns:DealParkingDeductObuPassResponse"/>
+ </operation>
+ <operation name="RefundParkingObuPass">
+  <documentation>Service definition of function ns__RefundParkingObuPass</documentation>
+  <input message="tns:RefundParkingObuPassRequest"/>
+  <output message="tns:RefundParkingObuPassResponse"/>
+ </operation>
+ <operation name="JdgVehicleDeductPlatePay">
+  <documentation>Service definition of function ns__JdgVehicleDeductPlatePay</documentation>
+  <input message="tns:JdgVehicleDeductPlatePayRequest"/>
+  <output message="tns:JdgVehicleDeductPlatePayResponse"/>
+ </operation>
+ <operation name="DealVehicleDeductPlatePay">
+  <documentation>Service definition of function ns__DealVehicleDeductPlatePay</documentation>
+  <input message="tns:DealVehicleDeductPlatePayRequest"/>
+  <output message="tns:DealVehicleDeductPlatePayResponse"/>
+ </operation>
+ <operation name="RefundVehiclePlatePay">
+  <documentation>Service definition of function ns__RefundVehiclePlatePay</documentation>
+  <input message="tns:RefundVehiclePlatePayRequest"/>
+  <output message="tns:RefundVehiclePlatePayResponse"/>
+ </operation>
+ <operation name="QueryParkingDeductStatus">
+  <documentation>Service definition of function ns__QueryParkingDeductStatus</documentation>
+  <input message="tns:QueryParkingDeductStatusRequest"/>
+  <output message="tns:QueryParkingDeductStatusResponse"/>
+ </operation>
+ <operation name="QueryParkingRefundStatus">
+  <documentation>Service definition of function ns__QueryParkingRefundStatus</documentation>
+  <input message="tns:QueryParkingRefundStatusRequest"/>
+  <output message="tns:QueryParkingRefundStatusResponse"/>
+ </operation>
+ <operation name="QueryParkingTransList">
+  <documentation>Service definition of function ns__QueryParkingTransList</documentation>
+  <input message="tns:QueryParkingTransListRequest"/>
+  <output message="tns:QueryParkingTransListResponse"/>
+ </operation>
+ <operation name="QueryParkingClearingTtl">
+  <documentation>Service definition of function ns__QueryParkingClearingTtl</documentation>
+  <input message="tns:QueryParkingClearingTtlRequest"/>
+  <output message="tns:QueryParkingClearingTtlResponse"/>
+ </operation>
+ <operation name="TyfsPayAdvanceOrder">
+  <documentation>Service definition of function ns__TyfsPayAdvanceOrder</documentation>
+  <input message="tns:TyfsPayAdvanceOrderRequest"/>
+  <output message="tns:TyfsPayAdvanceOrderResponse"/>
+ </operation>
+ <operation name="TyfsPayGetSecurCode">
+  <documentation>Service definition of function ns__TyfsPayGetSecurCode</documentation>
+  <input message="tns:TyfsPayGetSecurCodeRequest"/>
+  <output message="tns:TyfsPayGetSecurCodeResponse"/>
+ </operation>
+ <operation name="TyfsPayConfirmOrder">
+  <documentation>Service definition of function ns__TyfsPayConfirmOrder</documentation>
+  <input message="tns:TyfsPayConfirmOrderRequest"/>
+  <output message="tns:TyfsPayConfirmOrderResponse"/>
+ </operation>
+ <operation name="TyfsPayRevokedOrder">
+  <documentation>Service definition of function ns__TyfsPayRevokedOrder</documentation>
+  <input message="tns:TyfsPayRevokedOrderRequest"/>
+  <output message="tns:TyfsPayRevokedOrderResponse"/>
+ </operation>
+ <operation name="TyfsPayQueryOrderStatus">
+  <documentation>Service definition of function ns__TyfsPayQueryOrderStatus</documentation>
+  <input message="tns:TyfsPayQueryOrderStatusRequest"/>
+  <output message="tns:TyfsPayQueryOrderStatusResponse"/>
+ </operation>
+ <operation name="TyfsPayQueryShopTransList">
+  <documentation>Service definition of function ns__TyfsPayQueryShopTransList</documentation>
+  <input message="tns:TyfsPayQueryShopTransListRequest"/>
+  <output message="tns:TyfsPayQueryShopTransListResponse"/>
+ </operation>
+ <operation name="TyfsPayQueryShopClearingTtl">
+  <documentation>Service definition of function ns__TyfsPayQueryShopClearingTtl</documentation>
+  <input message="tns:TyfsPayQueryShopClearingTtlRequest"/>
+  <output message="tns:TyfsPayQueryShopClearingTtlResponse"/>
+ </operation>
+ <operation name="JdgVehicleEtcpayState">
+  <documentation>Service definition of function ns__JdgVehicleEtcpayState</documentation>
+  <input message="tns:JdgVehicleEtcpayStateRequest"/>
+  <output message="tns:JdgVehicleEtcpayStateResponse"/>
+ </operation>
+</portType>
+
+<binding name="parking_server" type="tns:parking_serverPortType">
+ <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="UploadParkingOperatorInfo">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="UploadParkingInfo">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="UploadParkingLaneInfo">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="UploadParkingContrast">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="InParkingVehicle">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="JdgVehicleStateList">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="JdgParkingDeductObuPass">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="DealParkingDeductObuPass">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="RefundParkingObuPass">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="JdgVehicleDeductPlatePay">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="DealVehicleDeductPlatePay">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="RefundVehiclePlatePay">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="QueryParkingDeductStatus">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="QueryParkingRefundStatus">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="QueryParkingTransList">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="QueryParkingClearingTtl">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="TyfsPayAdvanceOrder">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="TyfsPayGetSecurCode">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="TyfsPayConfirmOrder">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="TyfsPayRevokedOrder">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="TyfsPayQueryOrderStatus">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="TyfsPayQueryShopTransList">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="TyfsPayQueryShopClearingTtl">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="JdgVehicleEtcpayState">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="parking_server">
+ <documentation>gSOAP 2.8.17r generated service definition</documentation>
+ <port name="parking_server" binding="tns:parking_server">
+  <SOAP:address location="http://10.50.15.130:31101"/>
+ </port>
+</service>
+
+</definitions>

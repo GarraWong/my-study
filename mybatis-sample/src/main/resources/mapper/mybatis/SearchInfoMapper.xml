@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wong.mapper.SearchInfoDao">
+
+    <resultMap type="com.wong.domain.SearchInfo" id="SearchInfoMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="cardid" column="cardid" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="VARCHAR"/>
+        <result property="intime" column="intime" jdbcType="TIMESTAMP"/>
+        <result property="xcgBxb" column="xcg_bxb" jdbcType="VARCHAR"/>
+        <result property="xcgZxbl" column="xcg_zxbl" jdbcType="VARCHAR"/>
+        <result property="xcgZx" column="xcg_zx" jdbcType="VARCHAR"/>
+        <result property="xcgDhbl" column="xcg_dhbl" jdbcType="VARCHAR"/>
+        <result property="xcgDh" column="xcg_dh" jdbcType="VARCHAR"/>
+        <result property="xcgLbbl" column="xcg_lbbl" jdbcType="VARCHAR"/>
+        <result property="xcgLb" column="xcg_lb" jdbcType="VARCHAR"/>
+        <result property="xcgSsxlbl" column="xcg_ssxlbl" jdbcType="VARCHAR"/>
+        <result property="xcgSsxl" column="xcg_ssxl" jdbcType="VARCHAR"/>
+        <result property="xcgSjxlbl" column="xcg_sjxlbl" jdbcType="VARCHAR"/>
+        <result property="xcgSjxl" column="xcg_sjxl" jdbcType="VARCHAR"/>
+        <result property="xcgHxb" column="xcg_hxb" jdbcType="VARCHAR"/>
+        <result property="xcgXhdb" column="xcg_xhdb" jdbcType="VARCHAR"/>
+        <result property="xcgHxbyj" column="xcg_hxbyj" jdbcType="VARCHAR"/>
+        <result property="xcgHxbtj" column="xcg_hxbtj" jdbcType="VARCHAR"/>
+        <result property="xcgPjxh" column="xcg_pjxh" jdbcType="VARCHAR"/>
+        <result property="xcgPjxhnd" column="xcg_pjxhnd" jdbcType="VARCHAR"/>
+        <result property="xcgRbcsd" column="xcg_rbcsd" jdbcType="VARCHAR"/>
+        <result property="xcgRbccv" column="xcg_rbccv" jdbcType="VARCHAR"/>
+        <result property="xcgXxb" column="xcg_xxb" jdbcType="VARCHAR"/>
+        <result property="xcgXxbtj" column="xcg_xxbtj" jdbcType="VARCHAR"/>
+        <result property="xcgXxbyj" column="xcg_xxbyj" jdbcType="VARCHAR"/>
+        <result property="xcgXxbkd" column="xcg_xxbkd" jdbcType="VARCHAR"/>
+        <result property="xcgXxbdxbl" column="xcg_xxbdxbl" jdbcType="VARCHAR"/>
+        <result property="ygBmky" column="yg_bmky" jdbcType="VARCHAR"/>
+        <result property="ygBmkt" column="yg_bmkt" jdbcType="VARCHAR"/>
+        <result property="ygEky" column="yg_eky" jdbcType="VARCHAR"/>
+        <result property="ygEkt" column="yg_ekt" jdbcType="VARCHAR"/>
+        <result property="ygHxky" column="yg_hxky" jdbcType="VARCHAR"/>
+        <result property="ncgNdy" column="ncg_ndy" jdbcType="VARCHAR"/>
+        <result property="ncgDhs" column="ncg_dhs" jdbcType="VARCHAR"/>
+        <result property="ncgTt" column="ncg_tt" jdbcType="VARCHAR"/>
+        <result property="ncgYx" column="ncg_yx" jdbcType="VARCHAR"/>
+        <result property="ncgDbz" column="ncg_dbz" jdbcType="VARCHAR"/>
+        <result property="ncgYxsy" column="ncg_yxsy" jdbcType="VARCHAR"/>
+        <result property="ncgBxb" column="ncg_bxb" jdbcType="VARCHAR"/>
+        <result property="ncgPpt" column="ncg_ppt" jdbcType="VARCHAR"/>
+        <result property="ncgBz" column="ncg_bz" jdbcType="VARCHAR"/>
+        <result property="ncgPh" column="ncg_ph" jdbcType="VARCHAR"/>
+        <result property="ncgWbdb" column="ncg_wbdb" jdbcType="VARCHAR"/>
+        <result property="ncgYs" column="ncg_ys" jdbcType="VARCHAR"/>
+        <result property="ncgTmd" column="ncg_tmd" jdbcType="VARCHAR"/>
+        <result property="ncgHxbdl" column="ncg_hxbdl" jdbcType="VARCHAR"/>
+        <result property="ncgBxbdl" column="ncg_bxbdl" jdbcType="VARCHAR"/>
+        <result property="ncgGx" column="ncg_gx" jdbcType="VARCHAR"/>
+        <result property="ncgYljj" column="ncg_yljj" jdbcType="VARCHAR"/>
+        <result property="ncgSpxb" column="ncg_spxb" jdbcType="VARCHAR"/>
+        <result property="sgnTsqg" column="sgn_tsqg" jdbcType="VARCHAR"/>
+        <result property="sgnNs" column="sgn_ns" jdbcType="VARCHAR"/>
+        <result property="sgnJg" column="sgn_jg" jdbcType="VARCHAR"/>
+        <result property="sgnNsuan" column="sgn_nsuan" jdbcType="VARCHAR"/>
+        <result property="sgnPpt" column="sgn_ppt" jdbcType="VARCHAR"/>
+        <result property="sgnXqg" column="sgn_xqg" jdbcType="VARCHAR"/>
+        <result property="sgnNsjg" column="sgn_nsjg" jdbcType="VARCHAR"/>
+        <result property="xzDgc" column="xz_dgc" jdbcType="VARCHAR"/>
+        <result property="xzGysz" column="xz_gysz" jdbcType="VARCHAR"/>
+        <result property="xzGmd" column="xz_gmd" jdbcType="VARCHAR"/>
+        <result property="xzDmd" column="xz_dmd" jdbcType="VARCHAR"/>
+        <result property="nxlNxmcd" column="nxl_nxmcd" jdbcType="VARCHAR"/>
+        <result property="nxlHh" column="nxl_hh" jdbcType="VARCHAR"/>
+        <result property="nxlXwcd" column="nxl_xwcd" jdbcType="VARCHAR"/>
+        <result property="nxlNxmsj" column="nxl_nxmsj" jdbcType="VARCHAR"/>
+        <result property="nxlBzh" column="nxl_bzh" jdbcType="VARCHAR"/>
+        <result property="nxlNxmbz" column="nxl_nxmbz" jdbcType="VARCHAR"/>
+        <result property="nxlEjt" column="nxl_ejt" jdbcType="VARCHAR"/>
+        <result property="nxlXwjjw" column="nxl_xwjjw" jdbcType="VARCHAR"/>
+        <result property="hbvDna" column="hbv_dna" jdbcType="VARCHAR"/>
+        <result property="xtKf" column="xt_kf" jdbcType="VARCHAR"/>
+        <result property="xtCh" column="xt_ch" jdbcType="VARCHAR"/>
+        <result property="xtJmcd" column="xt_jmcd" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="searchInfo">
+        id, name, cardid, sex,idnumber, age, intime, xcg_bxb, xcg_zxbl, xcg_zx, xcg_dhbl, xcg_dh, xcg_lbbl, xcg_lb, xcg_ssxlbl, xcg_ssxl, xcg_sjxlbl, xcg_sjxl, xcg_hxb, xcg_xhdb, xcg_hxbyj, xcg_hxbtj, xcg_pjxh, xcg_pjxhnd, xcg_rbcsd, xcg_rbccv, xcg_xxb, xcg_xxbtj, xcg_xxbyj, xcg_xxbkd, xcg_xxbdxbl, yg_bmky, yg_bmkt, yg_eky, yg_ekt, yg_hxky, ncg_ndy, ncg_dhs, ncg_tt, ncg_yx, ncg_dbz, ncg_yxsy, ncg_bxb, ncg_ppt, ncg_bz, ncg_ph, ncg_wbdb, ncg_ys, ncg_tmd, ncg_hxbdl, ncg_bxbdl, ncg_gx, ncg_yljj, ncg_spxb, sgn_tsqg, sgn_ns, sgn_jg, sgn_nsuan, sgn_ppt, sgn_xqg, sgn_nsjg, xz_dgc, xz_gysz, xz_gmd, xz_dmd, nxl_nxmcd, nxl_hh, nxl_xwcd, nxl_nxmsj, nxl_bzh, nxl_nxmbz, nxl_ejt, nxl_xwjjw, hbv_dna, xt_kf, xt_ch, xt_jmcd
+    </sql>
+
+
+
+
+
+    <insert id="insertBatch" parameterType="SearchInfo" keyProperty="id" useGeneratedKeys="true">
+        insert into search_info(name, cardid, sex, age, intime, xcg_bxb, xcg_zxbl, xcg_zx, xcg_dhbl, xcg_dh, xcg_lbbl, xcg_lb, xcg_ssxlbl, xcg_ssxl, xcg_sjxlbl, xcg_sjxl, xcg_hxb, xcg_xhdb, xcg_hxbyj, xcg_hxbtj, xcg_pjxh, xcg_pjxhnd, xcg_rbcsd, xcg_rbccv, xcg_xxb, xcg_xxbtj, xcg_xxbyj, xcg_xxbkd, xcg_xxbdxbl, yg_bmky, yg_bmkt, yg_eky, yg_ekt, yg_hxky, ncg_ndy, ncg_dhs, ncg_tt, ncg_yx, ncg_dbz, ncg_yxsy, ncg_bxb, ncg_ppt, ncg_bz, ncg_ph, ncg_wbdb, ncg_ys, ncg_tmd, ncg_hxbdl, ncg_bxbdl, ncg_gx, ncg_yljj, ncg_spxb, sgn_tsqg, sgn_ns, sgn_jg, sgn_nsuan, sgn_ppt, sgn_xqg, sgn_nsjg, xz_dgc, xz_gysz, xz_gmd, xz_dmd, nxl_nxmcd, nxl_hh, nxl_xwcd, nxl_nxmsj, nxl_bzh, nxl_nxmbz, nxl_ejt, nxl_xwjjw, hbv_dna, xt_kf, xt_ch, xt_jmcd)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.name}, #{entity.cardid}, #{entity.sex}, #{entity.age}, #{entity.intime}, #{entity.xcgBxb}, #{entity.xcgZxbl}, #{entity.xcgZx}, #{entity.xcgDhbl}, #{entity.xcgDh}, #{entity.xcgLbbl}, #{entity.xcgLb}, #{entity.xcgSsxlbl}, #{entity.xcgSsxl}, #{entity.xcgSjxlbl}, #{entity.xcgSjxl}, #{entity.xcgHxb}, #{entity.xcgXhdb}, #{entity.xcgHxbyj}, #{entity.xcgHxbtj}, #{entity.xcgPjxh}, #{entity.xcgPjxhnd}, #{entity.xcgRbcsd}, #{entity.xcgRbccv}, #{entity.xcgXxb}, #{entity.xcgXxbtj}, #{entity.xcgXxbyj}, #{entity.xcgXxbkd}, #{entity.xcgXxbdxbl}, #{entity.ygBmky}, #{entity.ygBmkt}, #{entity.ygEky}, #{entity.ygEkt}, #{entity.ygHxky}, #{entity.ncgNdy}, #{entity.ncgDhs}, #{entity.ncgTt}, #{entity.ncgYx}, #{entity.ncgDbz}, #{entity.ncgYxsy}, #{entity.ncgBxb}, #{entity.ncgPpt}, #{entity.ncgBz}, #{entity.ncgPh}, #{entity.ncgWbdb}, #{entity.ncgYs}, #{entity.ncgTmd}, #{entity.ncgHxbdl}, #{entity.ncgBxbdl}, #{entity.ncgGx}, #{entity.ncgYljj}, #{entity.ncgSpxb}, #{entity.sgnTsqg}, #{entity.sgnNs}, #{entity.sgnJg}, #{entity.sgnNsuan}, #{entity.sgnPpt}, #{entity.sgnXqg}, #{entity.sgnNsjg}, #{entity.xzDgc}, #{entity.xzGysz}, #{entity.xzGmd}, #{entity.xzDmd}, #{entity.nxlNxmcd}, #{entity.nxlHh}, #{entity.nxlXwcd}, #{entity.nxlNxmsj}, #{entity.nxlBzh}, #{entity.nxlNxmbz}, #{entity.nxlEjt}, #{entity.nxlXwjjw}, #{entity.hbvDna}, #{entity.xtKf}, #{entity.xtCh}, #{entity.xtJmcd})
+        </foreach>
+    </insert>
+
+    <insert id="insertBatch2" parameterType="SearchInfo" keyProperty="id" useGeneratedKeys="true">
+        insert into search_info_deal(name, cardid,idnumber, sex, age, intime, xcg_bxb, xcg_zxbl, xcg_zx, xcg_dhbl, xcg_dh, xcg_lbbl, xcg_lb, xcg_ssxlbl, xcg_ssxl, xcg_sjxlbl, xcg_sjxl, xcg_hxb, xcg_xhdb, xcg_hxbyj, xcg_hxbtj, xcg_pjxh, xcg_pjxhnd, xcg_rbcsd, xcg_rbccv, xcg_xxb, xcg_xxbtj, xcg_xxbyj, xcg_xxbkd, xcg_xxbdxbl, yg_bmky, yg_bmkt, yg_eky, yg_ekt, yg_hxky, ncg_ndy, ncg_dhs, ncg_tt, ncg_yx, ncg_dbz, ncg_yxsy, ncg_bxb, ncg_ppt, ncg_bz, ncg_ph, ncg_wbdb, ncg_ys, ncg_tmd, ncg_hxbdl, ncg_bxbdl, ncg_gx, ncg_yljj, ncg_spxb, sgn_tsqg, sgn_ns, sgn_jg, sgn_nsuan, sgn_ppt, sgn_xqg, sgn_nsjg, xz_dgc, xz_gysz, xz_gmd, xz_dmd, nxl_nxmcd, nxl_hh, nxl_xwcd, nxl_nxmsj, nxl_bzh, nxl_nxmbz, nxl_ejt, nxl_xwjjw, hbv_dna, xt_kf, xt_ch, xt_jmcd)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.cardid},#{entity.idnumber}, #{entity.sex}, #{entity.age}, #{entity.intime}, #{entity.xcgBxb}, #{entity.xcgZxbl}, #{entity.xcgZx}, #{entity.xcgDhbl}, #{entity.xcgDh}, #{entity.xcgLbbl}, #{entity.xcgLb}, #{entity.xcgSsxlbl}, #{entity.xcgSsxl}, #{entity.xcgSjxlbl}, #{entity.xcgSjxl}, #{entity.xcgHxb}, #{entity.xcgXhdb}, #{entity.xcgHxbyj}, #{entity.xcgHxbtj}, #{entity.xcgPjxh}, #{entity.xcgPjxhnd}, #{entity.xcgRbcsd}, #{entity.xcgRbccv}, #{entity.xcgXxb}, #{entity.xcgXxbtj}, #{entity.xcgXxbyj}, #{entity.xcgXxbkd}, #{entity.xcgXxbdxbl}, #{entity.ygBmky}, #{entity.ygBmkt}, #{entity.ygEky}, #{entity.ygEkt}, #{entity.ygHxky}, #{entity.ncgNdy}, #{entity.ncgDhs}, #{entity.ncgTt}, #{entity.ncgYx}, #{entity.ncgDbz}, #{entity.ncgYxsy}, #{entity.ncgBxb}, #{entity.ncgPpt}, #{entity.ncgBz}, #{entity.ncgPh}, #{entity.ncgWbdb}, #{entity.ncgYs}, #{entity.ncgTmd}, #{entity.ncgHxbdl}, #{entity.ncgBxbdl}, #{entity.ncgGx}, #{entity.ncgYljj}, #{entity.ncgSpxb}, #{entity.sgnTsqg}, #{entity.sgnNs}, #{entity.sgnJg}, #{entity.sgnNsuan}, #{entity.sgnPpt}, #{entity.sgnXqg}, #{entity.sgnNsjg}, #{entity.xzDgc}, #{entity.xzGysz}, #{entity.xzGmd}, #{entity.xzDmd}, #{entity.nxlNxmcd}, #{entity.nxlHh}, #{entity.nxlXwcd}, #{entity.nxlNxmsj}, #{entity.nxlBzh}, #{entity.nxlNxmbz}, #{entity.nxlEjt}, #{entity.nxlXwjjw}, #{entity.hbvDna}, #{entity.xtKf}, #{entity.xtCh}, #{entity.xtJmcd})
+        </foreach>
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update search_info
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="cardid != null and cardid != ''">
+                cardid = #{cardid},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex = #{sex},
+            </if>
+            <if test="age != null and age != ''">
+                age = #{age},
+            </if>
+            <if test="intime != null">
+                intime = #{intime},
+            </if>
+            <if test="xcgBxb != null and xcgBxb != ''">
+                xcg_bxb = #{xcgBxb},
+            </if>
+            <if test="xcgZxbl != null and xcgZxbl != ''">
+                xcg_zxbl = #{xcgZxbl},
+            </if>
+            <if test="xcgZx != null and xcgZx != ''">
+                xcg_zx = #{xcgZx},
+            </if>
+            <if test="xcgDhbl != null and xcgDhbl != ''">
+                xcg_dhbl = #{xcgDhbl},
+            </if>
+            <if test="xcgDh != null and xcgDh != ''">
+                xcg_dh = #{xcgDh},
+            </if>
+            <if test="xcgLbbl != null and xcgLbbl != ''">
+                xcg_lbbl = #{xcgLbbl},
+            </if>
+            <if test="xcgLb != null and xcgLb != ''">
+                xcg_lb = #{xcgLb},
+            </if>
+            <if test="xcgSsxlbl != null and xcgSsxlbl != ''">
+                xcg_ssxlbl = #{xcgSsxlbl},
+            </if>
+            <if test="xcgSsxl != null and xcgSsxl != ''">
+                xcg_ssxl = #{xcgSsxl},
+            </if>
+            <if test="xcgSjxlbl != null and xcgSjxlbl != ''">
+                xcg_sjxlbl = #{xcgSjxlbl},
+            </if>
+            <if test="xcgSjxl != null and xcgSjxl != ''">
+                xcg_sjxl = #{xcgSjxl},
+            </if>
+            <if test="xcgHxb != null and xcgHxb != ''">
+                xcg_hxb = #{xcgHxb},
+            </if>
+            <if test="xcgXhdb != null and xcgXhdb != ''">
+                xcg_xhdb = #{xcgXhdb},
+            </if>
+            <if test="xcgHxbyj != null and xcgHxbyj != ''">
+                xcg_hxbyj = #{xcgHxbyj},
+            </if>
+            <if test="xcgHxbtj != null and xcgHxbtj != ''">
+                xcg_hxbtj = #{xcgHxbtj},
+            </if>
+            <if test="xcgPjxh != null and xcgPjxh != ''">
+                xcg_pjxh = #{xcgPjxh},
+            </if>
+            <if test="xcgPjxhnd != null and xcgPjxhnd != ''">
+                xcg_pjxhnd = #{xcgPjxhnd},
+            </if>
+            <if test="xcgRbcsd != null and xcgRbcsd != ''">
+                xcg_rbcsd = #{xcgRbcsd},
+            </if>
+            <if test="xcgRbccv != null and xcgRbccv != ''">
+                xcg_rbccv = #{xcgRbccv},
+            </if>
+            <if test="xcgXxb != null and xcgXxb != ''">
+                xcg_xxb = #{xcgXxb},
+            </if>
+            <if test="xcgXxbtj != null and xcgXxbtj != ''">
+                xcg_xxbtj = #{xcgXxbtj},
+            </if>
+            <if test="xcgXxbyj != null and xcgXxbyj != ''">
+                xcg_xxbyj = #{xcgXxbyj},
+            </if>
+            <if test="xcgXxbkd != null and xcgXxbkd != ''">
+                xcg_xxbkd = #{xcgXxbkd},
+            </if>
+            <if test="xcgXxbdxbl != null and xcgXxbdxbl != ''">
+                xcg_xxbdxbl = #{xcgXxbdxbl},
+            </if>
+            <if test="ygBmky != null and ygBmky != ''">
+                yg_bmky = #{ygBmky},
+            </if>
+            <if test="ygBmkt != null and ygBmkt != ''">
+                yg_bmkt = #{ygBmkt},
+            </if>
+            <if test="ygEky != null and ygEky != ''">
+                yg_eky = #{ygEky},
+            </if>
+            <if test="ygEkt != null and ygEkt != ''">
+                yg_ekt = #{ygEkt},
+            </if>
+            <if test="ygHxky != null and ygHxky != ''">
+                yg_hxky = #{ygHxky},
+            </if>
+            <if test="ncgNdy != null and ncgNdy != ''">
+                ncg_ndy = #{ncgNdy},
+            </if>
+            <if test="ncgDhs != null and ncgDhs != ''">
+                ncg_dhs = #{ncgDhs},
+            </if>
+            <if test="ncgTt != null and ncgTt != ''">
+                ncg_tt = #{ncgTt},
+            </if>
+            <if test="ncgYx != null and ncgYx != ''">
+                ncg_yx = #{ncgYx},
+            </if>
+            <if test="ncgDbz != null and ncgDbz != ''">
+                ncg_dbz = #{ncgDbz},
+            </if>
+            <if test="ncgYxsy != null and ncgYxsy != ''">
+                ncg_yxsy = #{ncgYxsy},
+            </if>
+            <if test="ncgBxb != null and ncgBxb != ''">
+                ncg_bxb = #{ncgBxb},
+            </if>
+            <if test="ncgPpt != null and ncgPpt != ''">
+                ncg_ppt = #{ncgPpt},
+            </if>
+            <if test="ncgBz != null and ncgBz != ''">
+                ncg_bz = #{ncgBz},
+            </if>
+            <if test="ncgPh != null and ncgPh != ''">
+                ncg_ph = #{ncgPh},
+            </if>
+            <if test="ncgWbdb != null and ncgWbdb != ''">
+                ncg_wbdb = #{ncgWbdb},
+            </if>
+            <if test="ncgYs != null and ncgYs != ''">
+                ncg_ys = #{ncgYs},
+            </if>
+            <if test="ncgTmd != null and ncgTmd != ''">
+                ncg_tmd = #{ncgTmd},
+            </if>
+            <if test="ncgHxbdl != null and ncgHxbdl != ''">
+                ncg_hxbdl = #{ncgHxbdl},
+            </if>
+            <if test="ncgBxbdl != null and ncgBxbdl != ''">
+                ncg_bxbdl = #{ncgBxbdl},
+            </if>
+            <if test="ncgGx != null and ncgGx != ''">
+                ncg_gx = #{ncgGx},
+            </if>
+            <if test="ncgYljj != null and ncgYljj != ''">
+                ncg_yljj = #{ncgYljj},
+            </if>
+            <if test="ncgSpxb != null and ncgSpxb != ''">
+                ncg_spxb = #{ncgSpxb},
+            </if>
+            <if test="sgnTsqg != null and sgnTsqg != ''">
+                sgn_tsqg = #{sgnTsqg},
+            </if>
+            <if test="sgnNs != null and sgnNs != ''">
+                sgn_ns = #{sgnNs},
+            </if>
+            <if test="sgnJg != null and sgnJg != ''">
+                sgn_jg = #{sgnJg},
+            </if>
+            <if test="sgnNsuan != null and sgnNsuan != ''">
+                sgn_nsuan = #{sgnNsuan},
+            </if>
+            <if test="sgnPpt != null and sgnPpt != ''">
+                sgn_ppt = #{sgnPpt},
+            </if>
+            <if test="sgnXqg != null and sgnXqg != ''">
+                sgn_xqg = #{sgnXqg},
+            </if>
+            <if test="sgnNsjg != null and sgnNsjg != ''">
+                sgn_nsjg = #{sgnNsjg},
+            </if>
+            <if test="xzDgc != null and xzDgc != ''">
+                xz_dgc = #{xzDgc},
+            </if>
+            <if test="xzGysz != null and xzGysz != ''">
+                xz_gysz = #{xzGysz},
+            </if>
+            <if test="xzGmd != null and xzGmd != ''">
+                xz_gmd = #{xzGmd},
+            </if>
+            <if test="xzDmd != null and xzDmd != ''">
+                xz_dmd = #{xzDmd},
+            </if>
+            <if test="nxlNxmcd != null and nxlNxmcd != ''">
+                nxl_nxmcd = #{nxlNxmcd},
+            </if>
+            <if test="nxlHh != null and nxlHh != ''">
+                nxl_hh = #{nxlHh},
+            </if>
+            <if test="nxlXwcd != null and nxlXwcd != ''">
+                nxl_xwcd = #{nxlXwcd},
+            </if>
+            <if test="nxlNxmsj != null and nxlNxmsj != ''">
+                nxl_nxmsj = #{nxlNxmsj},
+            </if>
+            <if test="nxlBzh != null and nxlBzh != ''">
+                nxl_bzh = #{nxlBzh},
+            </if>
+            <if test="nxlNxmbz != null and nxlNxmbz != ''">
+                nxl_nxmbz = #{nxlNxmbz},
+            </if>
+            <if test="nxlEjt != null and nxlEjt != ''">
+                nxl_ejt = #{nxlEjt},
+            </if>
+            <if test="nxlXwjjw != null and nxlXwjjw != ''">
+                nxl_xwjjw = #{nxlXwjjw},
+            </if>
+            <if test="hbvDna != null and hbvDna != ''">
+                hbv_dna = #{hbvDna},
+            </if>
+            <if test="xtKf != null and xtKf != ''">
+                xt_kf = #{xtKf},
+            </if>
+            <if test="xtCh != null and xtCh != ''">
+                xt_ch = #{xtCh},
+            </if>
+            <if test="xtJmcd != null and xtJmcd != ''">
+                xt_jmcd = #{xtJmcd},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from search_info where id = #{id}
+    </delete>
+
+    <select id="queryGroupBy" resultMap="SearchInfoMap">
+        SELECT name, cardid,sex,age,MAX(intime) as intime FROM search_info GROUP BY cardid,name,sex,age ORDER BY name ,age
+    </select>
+
+    <select id="queryIntimeInSameName" resultMap="SearchInfoMap">
+        SELECT name,age,cardid,MAX(intime) as intime ,sex FROM search_info WHERE
+        <foreach collection="cardids" item="id" separator="or">
+            cardid = #{id}
+        </foreach>
+        GROUP BY cardid,name,age,sex
+    </select>
+
+    <select id="queryByCardIds" resultMap="SearchInfoMap">
+        SELECT
+            <include refid="searchInfo"/>
+        FROM search_info
+        WHERE
+        <foreach collection="ids" item="id" separator="or">
+            cardid = #{id}
+        </foreach>
+    </select>
+
+    <select id="queryAllDataWithDeal" resultMap="SearchInfoMap">
+        SELECT
+            <include refid="searchInfo"/>
+        FROM search_info_deal
+    </select>
+
+</mapper>
+
