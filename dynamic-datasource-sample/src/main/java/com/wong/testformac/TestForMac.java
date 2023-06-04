@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class TestForMac {
 
     public static void main(String[] args) {
+        System.out.println("测试分支保护");
         SpringApplication.run(TestForMac.class, args);
     }
 
