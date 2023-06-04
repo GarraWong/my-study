@@ -62,4 +62,19 @@ public class SuperClassController {
     public String isUsable8() {
         return businessTypeTwo.baseInsert();
     }
+
+    @FunctionalInterface
+    public interface Person {
+        public void sayHello (String s);
+    }
+
+    public class Hello {
+        private void printHello (Person person) {
+            String s = "Hello";
+            person.sayHello(s);
+        }
+        private void printText () {
+            printHello(s -> System.out.println(s));
+        }
+    }
 }
