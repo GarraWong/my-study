@@ -15,6 +15,7 @@
         <module>security-war-sample</module>
         <module>sort</module>
         <module>webservices</module>
+        <module>offers</module>
     </modules>
 
     <packaging>pom</packaging>

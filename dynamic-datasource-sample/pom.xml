@@ -49,10 +49,10 @@
             <artifactId>spring-boot-starter-jta-atomikos</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>mysql</groupId>-->
+<!--            <artifactId>mysql-connector-java</artifactId>-->
+<!--        </dependency>-->
         <!--KingBase-->
         <!--<dependency>-->
         <!--    <groupId>com.kingbase8</groupId>-->
