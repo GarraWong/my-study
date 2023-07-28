@@ -1,6 +1,6 @@
 package com.wong;
 
-import static com.wong.Util.*;
+import static com.wong.BuildUtil.*;
 /**
  * 输入两个递增的链表，单个链表的长度为n，合并这两个链表并使新链表中的节点仍然是递增排序的。
  * 数据范围 0≤n≤1000  −1000≤节点值≤1000

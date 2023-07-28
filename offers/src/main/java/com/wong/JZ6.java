@@ -25,7 +25,7 @@ public class JZ6 {
     }
 
     public static void main(String[] args) {
-        printListFromTailToHead(null);
+        System.out.println(printListFromTailToHead(BuildUtil.buildSortedNode(5)));
     }
 
 }
