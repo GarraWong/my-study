@@ -1,5 +1,6 @@
 package com.wong;
 
+import static com.wong.Util.*;
 /**
  * 输入两个递增的链表，单个链表的长度为n，合并这两个链表并使新链表中的节点仍然是递增排序的。
  * 数据范围 0≤n≤1000  −1000≤节点值≤1000
@@ -47,17 +48,8 @@ public class JZ25 {
      * @param args
      */
     public static void main(String[] args) {
-        ListNode listNode = new ListNode(1);
-        ListNode listNode2 = new ListNode(3);
-        ListNode listNode3 = new ListNode(5);
-        ListNode listNode4 = new ListNode(2);
-        ListNode listNode5 = new ListNode(4);
-        ListNode listNode6 = new ListNode(6);
-        listNode.next = listNode2;
-        listNode2.next = listNode3;
+        ListNode merge = Merge(buildSortedNode(3), buildSortedNode(6));
+        System.out.println(merge);
 
-        listNode4.next = listNode5;
-        listNode5.next = listNode6;
-        Merge(listNode, listNode4);
     }
 }
