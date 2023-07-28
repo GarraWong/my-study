@@ -1,7 +1,6 @@
 package com.wong;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
 /**
  * 从尾到头打印链表
@@ -25,7 +24,7 @@ public class JZ6 {
     }
 
     public static void main(String[] args) {
-        System.out.println(printListFromTailToHead(BuildUtil.buildSortedNode(5)));
+        System.out.println(printListFromTailToHead(BuildUtil.buildNode(5)));
     }
 
 }

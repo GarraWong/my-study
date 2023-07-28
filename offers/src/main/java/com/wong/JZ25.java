@@ -48,7 +48,7 @@ public class JZ25 {
      * @param args
      */
     public static void main(String[] args) {
-        ListNode merge = Merge(buildSortedNode(3), buildSortedNode(6));
+        ListNode merge = Merge(buildNode(3), buildNode(6));
         System.out.println(merge);
 
     }

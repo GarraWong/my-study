@@ -9,7 +9,7 @@ package com.wong;
 
 
 public class JZ24 {
-    private static ListNode reverseList(ListNode head) {
+    public static ListNode reverseList(ListNode head) {
         ListNode cur = head;
         ListNode pre = null;
         while (cur != null) {
@@ -22,7 +22,7 @@ public class JZ24 {
     }
 
     public static void main(String[] args) {
-        System.out.println(reverseList(BuildUtil.buildSortedNode(10)));
+        System.out.println(reverseList(BuildUtil.buildNode(10)));
     }
 
 }
