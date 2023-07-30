@@ -1,4 +1,6 @@
-package com.wong;
+package com.wong.listnode;
+
+import com.wong.ListNode;
 
 /**
  * JZ52 两个链表的第一个公共结点

@@ -1,4 +1,6 @@
-package com.wong;
+package com.wong.listnode;
+
+import com.wong.ListNode;
 
 import static com.wong.BuildUtil.*;
 /**

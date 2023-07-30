@@ -1,4 +1,7 @@
-package com.wong;
+package com.wong.listnode;
+
+import com.wong.BuildUtil;
+import com.wong.ListNode;
 
 /**
  * 反转链表
