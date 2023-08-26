@@ -6,7 +6,7 @@ spring:
     druid:
       # 主库数据源 mysql
       master:
-        url: jdbc:mysql://localhost:3306/study?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+        url: jdbc:mysql://localhost:3306/my_test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
         username: root
         password: 123456
         driverClassName: com.mysql.cj.jdbc.Driver
@@ -95,6 +95,5 @@ server:
 logging:
   level:
     com.wong: debug
-    com.wong.mapper: info
     org.springframework: warn
 

@@ -30,6 +30,10 @@
         <alibaba.nacos.version>2.0.3</alibaba.nacos.version>
         <mybatis-spring-boot.version>2.2.2</mybatis-spring-boot.version>
         <pagehelper.boot.version>1.4.1</pagehelper.boot.version>
+        <poi.version>4.1.2</poi.version>
+        <commons.collections.version>3.2.2</commons.collections.version>
+        <commons.io.version>2.11.0</commons.io.version>
+
     </properties>
 
 
@@ -118,12 +122,6 @@
                 <version>${alibaba.nacos.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>5.8.3</version>
-            </dependency>
-
             <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
             <dependency>
                 <groupId>org.postgresql</groupId>
@@ -131,7 +129,54 @@
                 <version>42.2.9</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.26</version>
+            </dependency>
 
+
+                <!-- 解析客户端操作系统、浏览器等 -->
+                <dependency>
+                    <groupId>eu.bitwalker</groupId>
+                    <artifactId>UserAgentUtils</artifactId>
+                    <version>${bitwalker.version}</version>
+                </dependency>
+
+                <!-- io常用工具类 -->
+                <dependency>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                    <version>${commons.io.version}</version>
+                </dependency>
+
+                <!-- 文件上传工具类 -->
+                <dependency>
+                    <groupId>commons-fileupload</groupId>
+                    <artifactId>commons-fileupload</artifactId>
+                    <version>${commons.fileupload.version}</version>
+                </dependency>
+
+                <!-- excel工具 -->
+                <dependency>
+                    <groupId>org.apache.poi</groupId>
+                    <artifactId>poi-ooxml</artifactId>
+                    <version>${poi.version}</version>
+                </dependency>
+
+                <!-- collections工具类 -->
+                <dependency>
+                    <groupId>commons-collections</groupId>
+                    <artifactId>commons-collections</artifactId>
+                    <version>${commons.collections.version}</version>
+                </dependency>
+
+                <!-- 阿里JSON解析器 -->
+                <dependency>
+                    <groupId>com.alibaba.fastjson2</groupId>
+                    <artifactId>fastjson2</artifactId>
+                    <version>${fastjson.version}</version>
+                </dependency>
 
         </dependencies>
     </dependencyManagement>
