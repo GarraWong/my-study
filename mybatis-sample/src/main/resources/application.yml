@@ -6,7 +6,7 @@ spring:
     druid:
       # 主库数据源 mysql
       master:
-        url: jdbc:mysql://localhost:3306/my_test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+        url: jdbc:mysql://localhost:3306/article?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
         username: root
         password: 123456
         driverClassName: com.mysql.cj.jdbc.Driver
@@ -59,6 +59,11 @@ spring:
       max-file-size: 100MB
       # 设置总上传的文件大小
       max-request-size: 100MB
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
 
 # MyBatis配置
 mybatis:
