@@ -1,9 +1,8 @@
 package com.wong.testdemo.config;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.parser.Feature;
-import com.alibaba.fastjson.parser.ParserConfig;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONReader;
+import com.alibaba.fastjson2.JSONWriter;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -30,11 +29,6 @@ public class FastJson2JsonRedisSerializer<T> implements RedisSerializer<T> {
 
     private Class<T> clazz;
 
-    static
-    {
-        ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
-    }
-
     public FastJson2JsonRedisSerializer(Class<T> clazz)
     {
         super();
@@ -49,7 +43,7 @@ public class FastJson2JsonRedisSerializer<T> implements RedisSerializer<T> {
             return new byte[0];
         }
         //SerializerFeature.WriteNullStringAsEmpty string属性为空序列化为空串
-        return JSON.toJSONString(t, SerializerFeature.WriteClassName,SerializerFeature.WriteNullStringAsEmpty).getBytes(DEFAULT_CHARSET);
+        return JSON.toJSONString(t, JSONWriter.Feature.WriteClassName,JSONWriter.Feature.WriteNullStringAsEmpty).getBytes(DEFAULT_CHARSET);
     }
 
     @Override
@@ -61,7 +55,7 @@ public class FastJson2JsonRedisSerializer<T> implements RedisSerializer<T> {
         }
         String str = new String(bytes, DEFAULT_CHARSET);
         //SupportNonPublicField  支持解析没有setter方法的非public属性 InitStringFieldAsEmpty 对于没有值的字符串属性设置为空串
-        return JSON.parseObject(str, clazz, Feature.SupportNonPublicField, Feature.InitStringFieldAsEmpty);
+        return JSON.parseObject(str, clazz, JSONReader.Feature.InitStringFieldAsEmpty);
     }
 
     public void setObjectMapper(ObjectMapper objectMapper)

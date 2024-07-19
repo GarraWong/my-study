@@ -39,11 +39,4 @@ public class TestController {
         Object file = map.get("file");
         return "成功";
     }
-
-    @PostMapping("/saveFile")
-    public String saveFile() {
-
-    }
-
-
 }
