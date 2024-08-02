@@ -8,13 +8,11 @@
     <version>1.0.0</version>
 
     <modules>
-        <module>test-sample</module>
         <module>mybatis-sample</module>
         <module>security-sample</module>
         <module>security-war-sample</module>
-        <module>sort</module>
-        <module>webservices</module>
         <module>offers</module>
+        <module>xxl-job</module>
     </modules>
 
     <packaging>pom</packaging>
