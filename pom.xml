@@ -8,13 +8,11 @@
     <version>1.0.0</version>
 
     <modules>
-        <module>test-sample</module>
         <module>mybatis-sample</module>
         <module>security-sample</module>
         <module>security-war-sample</module>
-        <module>sort</module>
-        <module>webservices</module>
         <module>offers</module>
+        <module>abstract-filter-demo</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -80,7 +78,7 @@
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
-                <version>5.4.1</version>
+                <version>5.8.14</version>
             </dependency>
 
             <dependency>
