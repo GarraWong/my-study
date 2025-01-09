@@ -12,8 +12,6 @@
         <module>security-sample</module>
         <module>security-war-sample</module>
         <module>offers</module>
-        <module>abstract-filter-demo</module>
-        <module>xxl-job</module>
     </modules>
 
     <packaging>pom</packaging>
