@@ -1,19 +1,16 @@
 package com.wong.po;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.NumberUtil;
+import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.ReUtil;
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.*;
 import com.alibaba.excel.enums.BooleanEnum;
-import com.alibaba.excel.enums.poi.HorizontalAlignmentEnum;
-import com.wong.annotations.Excel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
-import org.apache.poi.ss.usermodel.IndexedColors;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -62,19 +59,19 @@ public class RepoInfo {
     private List<DevInsightPersonInfo> personInfos;
 
     //增加行
-    @ExcelProperty("增加行")
+    @ExcelProperty("总增加行")
     private Integer insertions;
     //删减行
-    @ExcelProperty("删减行")
+    @ExcelProperty("总删减行")
     private Integer deletions;
     //空白行
-    @ExcelProperty("空白行")
+    @ExcelProperty("总空白行")
     private Integer blanks;
     //非空非注行
-    @ExcelProperty("非空非注行")
+    @ExcelProperty("总非空非注行")
     private Integer nbncs;
     //代码当量
-    @ExcelProperty("代码当量")
+    @ExcelProperty("总代码当量")
     private BigDecimal devEquivalent;
 
 
@@ -143,6 +140,20 @@ public class RepoInfo {
                 '}';
     }
 
+    /**
+     * 处理commit,针对{@link DevInsightCommit#getObeyMessage()},{@link DevInsightCommit#getObeyTaskId()} ,{@link DevInsightCommit#getTaskId()}
+     */
+    public void beforeCalculate() {
+        this.commits.stream().filter(commit-> ReUtil.isMatch("^(feature|fix|doc|update|style|chore|refactor|test|release|uat|ui|UI)-[a-z0-9]+/.+", commit.getTitle()))
+                .peek(commit -> commit.setObeyMessage(true))
+                .filter(commit -> ReUtil.isMatch("^(feature|fix|doc|update|style|chore|refactor|test|release|uat|ui|UI)-[1-9]\\d*/.+", commit.getTitle()))
+                .forEach(commit -> {
+                    commit.setObeyTaskId(true);
+                    String taskId = commit.getTitle().split("-")[1].split("/")[0];
+                    commit.setTaskId(taskId);
+                });
+    }
+
     public void calculate() {
         this.totalCount = CollUtil.isNotEmpty(this.commits) ? this.commits.size() : 0L;
         if (totalCount != 0) {
@@ -163,7 +174,11 @@ public class RepoInfo {
                 this.effectiveRate = new BigDecimal(this.obeyEffectiveCount).divide(new BigDecimal(this.obeyRuleCount), 4, RoundingMode.HALF_UP);
             }
             //处理代码当量和新增、删减等
-
+            this.devEquivalent = this.commits.stream().map(DevInsightCommit::getDevEquivalent).reduce(BigDecimal.ZERO, BigDecimal::add);
+            this.insertions = this.commits.stream().map(DevInsightCommit::getInsertions).reduce(0, Integer::sum);
+            this.deletions = this.commits.stream().map(DevInsightCommit::getDeletions).reduce(0, Integer::sum);
+            this.nbncs = this.commits.stream().map(DevInsightCommit::getNbncs).reduce(0, Integer::sum);
+            this.blanks = this.commits.stream().map(DevInsightCommit::getBlanks).reduce(0, Integer::sum);
         }
     }
 
@@ -181,9 +196,9 @@ public class RepoInfo {
                 personInfo.setCommitName(firstCommits.getAuthorName());
                 personInfo.setCommitEmail(firstCommits.getAuthorEmail());
                 personInfo.setCommits(personCommits);
-                personInfo.setTempTaskIds(null);//TODO
                 personInfo.setTotalCount(CollUtil.isNotEmpty(personCommits) ? personCommits.size() : 0L);
                 if (CollUtil.isNotEmpty(personCommits)) {
+                    personInfo.setTempTaskIds(personCommits.stream().filter(sCommit -> BooleanUtil.isTrue(sCommit.getObeyTaskId())).map(DevInsightCommit::getTaskId).collect(Collectors.toList()));
                     List<String> commitMessages = personCommits.stream().map(DevInsightCommit::getTitle).collect(Collectors.toList());
                     personInfo.setMergeRevertCount(commitMessages.stream().filter(e -> ReUtil.isMatch("^Merge .+", e) || ReUtil.isMatch("^Revert .+", e)).count());
                     personInfo.setExcludeMergeRevertCount(personInfo.getTotalCount() - personInfo.getMergeRevertCount());
@@ -200,6 +215,15 @@ public class RepoInfo {
                     if (!Objects.equals(personInfo.getObeyRuleCount(), 0L)) {
                         personInfo.setEffectiveRate(new BigDecimal(personInfo.getObeyEffectiveCount()).divide(new BigDecimal(personInfo.getObeyRuleCount()), 4, RoundingMode.HALF_UP));
                     }
+
+
+                    //处理代码当量和新增、删减等
+                    personInfo.setDevEquivalent(personCommits.stream().map(DevInsightCommit::getDevEquivalent).reduce(BigDecimal.ZERO, BigDecimal::add));
+                    personInfo.setInsertions(personCommits.stream().map(DevInsightCommit::getInsertions).reduce(0, Integer::sum));
+                    personInfo.setDeletions(personCommits.stream().map(DevInsightCommit::getDeletions).reduce(0, Integer::sum));
+                    personInfo.setNbncs(personCommits.stream().map(DevInsightCommit::getNbncs).reduce(0, Integer::sum));
+                    personInfo.setBlanks(personCommits.stream().map(DevInsightCommit::getBlanks).reduce(0, Integer::sum));
+
                 }
                 this.personInfos.add(personInfo);
             }

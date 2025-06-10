@@ -70,10 +70,11 @@ public class DevInsightController {
                 } while (CollUtil.isNotEmpty(commits));
                 //整体信息处理
                 repo.setCommits(allCommits);
+                repo.beforeCalculate();
                 repo.calculate();
                 //个人信息处理
                 repo.calculatePersonInfo();
-
+                repo.getPersonInfos().forEach(DevInsightPersonInfo::afterCalculate);
             });
 
             //处理项目名

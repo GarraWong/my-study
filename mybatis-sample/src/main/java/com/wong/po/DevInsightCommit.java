@@ -32,7 +32,7 @@ public class DevInsightCommit {
     private BigDecimal devEquivalent;
 
     /**
-     * 是否是符合推广规范的有效message
+     * 是否是符合推广规范的有效代码message
      */
     private Boolean obeyMessage;
     /**

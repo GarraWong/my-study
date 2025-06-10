@@ -1,5 +1,6 @@
 package com.wong.po;
 
+import cn.hutool.core.collection.CollUtil;
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.*;
@@ -8,6 +9,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 这是类的描述 补充它
@@ -33,7 +35,31 @@ public class DevInsightPersonInfo {
     @ExcelIgnore
     private List<DevInsightCommit> commits;
     @ExcelIgnore
-    private List<Integer> tempTaskIds;
+    private List<String> tempTaskIds;
+    /**
+     * tapd任务id，通过tempTaskIds进行计算
+     */
+    @ExcelProperty("涉及任务id")
+    @ContentStyle(wrapped = BooleanEnum.TRUE)
+    private String taskIdStr;
+
+
+    //增加行
+    @ExcelProperty("总增加行")
+    private Integer insertions;
+    //删减行
+    @ExcelProperty("总删减行")
+    private Integer deletions;
+    //空白行
+    @ExcelProperty("总空白行")
+    private Integer blanks;
+    //非空非注行
+    @ExcelProperty("总非空非注行")
+    private Integer nbncs;
+    //代码当量
+    @ExcelProperty("总代码当量")
+    private BigDecimal devEquivalent;
+
 
     //总计数
     @ExcelProperty("总提交数")
@@ -75,5 +101,17 @@ public class DevInsightPersonInfo {
     //无效提交
     @ExcelProperty("无效提交数(TAPD为0)")
     private Long obeyNonEffectiveCount;
+
+
+    /**
+     * 在计算完基础信息以后的处理
+     * 计算commit里的tapd信息内容
+     */
+    public void afterCalculate() {
+        if (CollUtil.isNotEmpty(this.tempTaskIds)) {
+            List<String> distinctTaskIds = this.tempTaskIds.stream().distinct().collect(Collectors.toList());
+            this.taskIdStr = CollUtil.join(distinctTaskIds, "\n");
+        }
+    }
 
 }
