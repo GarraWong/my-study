@@ -146,7 +146,7 @@ public class RepoInfo {
                 });
     }
 
-    public void calculate() {
+    public void calculateRepoInfo() {
         this.totalCount = CollUtil.isNotEmpty(this.commits) ? this.commits.size() : 0L;
         if (totalCount != 0) {
             List<String> commitMessages = this.commits.stream().map(DevInsightCommit::getTitle).collect(Collectors.toList());

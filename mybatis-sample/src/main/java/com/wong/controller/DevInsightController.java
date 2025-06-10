@@ -1,6 +1,5 @@
 package com.wong.controller;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
@@ -9,9 +8,9 @@ import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.fastjson2.JSONObject;
 import com.wong.mapper.SystemTapdMapper;
 import com.wong.po.devinsight.*;
+import com.wong.service.DevInsightService;
 import com.wong.utils.DevInsightUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.compress.utils.Lists;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +35,8 @@ public class DevInsightController {
     @Resource
     DevInsightUtil util;
     @Resource
+    DevInsightService devInsightService;
+    @Resource
     SystemTapdMapper systemTaskMapper;
 
     public static Map<String, String> taskDtoMap;
@@ -59,32 +60,13 @@ public class DevInsightController {
             demandDtosMap = demandDtos.stream().peek(demand -> demand.setId(StrUtil.subSuf(demand.getId(), demand.getId().length() - 7)))
                     .collect(Collectors.toMap(SystemDemandDto::getId, SystemDemandDto::getTitle, (v1, v2) -> v1));
             repos.forEach(repo ->{
-                String repoId = repo.getRepoId();
-                List<DevInsightCommit> allCommits = Lists.newArrayList();
-                List<DevInsightCommit> commits;
-                int page = 1;
-                do  {
-                    TreeMap<String, Object> searchCommitParam = new TreeMap<>();
-                    searchCommitParam.put("id", repoId);
-                    searchCommitParam.put("page", page);
-                    searchCommitParam.put("pageSize", 100);
-                    searchCommitParam.put("authorTimestampFrom", "2025-05-22T00:00:00.000Z");
-                    searchCommitParam.put("authorTimestampTo", "2025-06-30T23:59:59.999Z");
-                    JSONObject commitResult = util.invoke(searchCommitParam, "/repo/commit/list");
-                    if (util.judgeSuccess(commitResult)) {
-                        commits = util.getDataList(commitResult, DevInsightCommit.class);
-                        allCommits.addAll(commits);
-
-                    } else {
-                        log.error("获取commit失败,{}", commitResult);
-                        throw new RuntimeException("获取commit失败");
-                    }
-                    page++;
-                } while (CollUtil.isNotEmpty(commits));
+                List<DevInsightCommit> allCommits = devInsightService.getRepoAllCommit(repo.getRepoId());
                 //整体信息处理
                 repo.setCommits(allCommits);
+                //处理commit信息
                 repo.beforeCalculate();
-                repo.calculate();
+                //处理仓库信息
+                repo.calculateRepoInfo();
                 //个人信息处理
                 repo.calculatePersonInfo();
                 repo.getPersonInfos().forEach(DevInsightPersonInfo::afterCalculate);
@@ -117,6 +99,9 @@ public class DevInsightController {
         log.info("finish,耗时:[{}]ms", end - begin);
 
     }
+
+
+
 
     /**
      * 过滤所有的repo，使用project过滤,<br/>

@@ -124,7 +124,6 @@ public class DevInsightPersonInfo {
             List<String> result = distinctTaskIds.stream().map(id -> {
                 if (DevInsightController.taskDtoMap.containsKey(id)) {
                     return id + "-任务-" + DevInsightController.taskDtoMap.get(id);
-
                 } else if (DevInsightController.demandDtosMap.containsKey(id)) {
                     return id + "-需求-" + DevInsightController.demandDtosMap.get(id);
                 } else {
