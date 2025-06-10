@@ -1,6 +1,6 @@
 package com.wong.service;
 
-import com.wong.po.devinsight.DevInsightCommit;
+import com.wong.po.devinsight.http.ResponseCommit;
 
 import java.util.List;
 
@@ -17,5 +17,5 @@ public interface DevInsightService {
      * @param repoId 思码逸的仓库id
      * @return 全部commit信息
      */
-    List<DevInsightCommit> getRepoAllCommit(String repoId);
+    List<ResponseCommit> getRepoAllCommit(String repoId);
 }

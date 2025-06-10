@@ -1,4 +1,4 @@
-package com.wong.po.devinsight;
+package com.wong.po.devinsight.database;
 
 import lombok.Data;
 

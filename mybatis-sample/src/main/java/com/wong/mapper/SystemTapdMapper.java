@@ -1,7 +1,7 @@
 package com.wong.mapper;
 
-import com.wong.po.devinsight.SystemDemandDto;
-import com.wong.po.devinsight.SystemTaskDto;
+import com.wong.po.devinsight.database.SystemDemandDto;
+import com.wong.po.devinsight.database.SystemTaskDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

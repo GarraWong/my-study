@@ -7,7 +7,13 @@ import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.fastjson2.JSONObject;
 import com.wong.mapper.SystemTapdMapper;
-import com.wong.po.devinsight.*;
+import com.wong.po.devinsight.annalyze.PersonInfo;
+import com.wong.po.devinsight.annalyze.RepoInfo;
+import com.wong.po.devinsight.database.SystemDemandDto;
+import com.wong.po.devinsight.database.SystemTaskDto;
+import com.wong.po.devinsight.http.ResponseCommit;
+import com.wong.po.devinsight.http.ResponseProject;
+import com.wong.po.devinsight.http.ResponseRepository;
 import com.wong.service.DevInsightService;
 import com.wong.utils.DevInsightUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -49,8 +55,8 @@ public class DevInsightController {
         JSONObject projectResult = util.invoke(treeMap, "/project/list");
         JSONObject repoResult = util.invoke(new TreeMap<>(), "/repo/list");
         if (util.judgeSuccess(projectResult) && util.judgeSuccess(repoResult)) {
-            List<DevInsightProject> projects = util.getDataList(projectResult, DevInsightProject.class);
-            List<DevInsightRepository> repositories = util.getDataList(repoResult, DevInsightRepository.class);
+            List<ResponseProject> projects = util.getDataList(projectResult, ResponseProject.class);
+            List<ResponseRepository> repositories = util.getDataList(repoResult, ResponseRepository.class);
 
             List<RepoInfo> repos = repositories.stream().map(RepoInfo::new).collect(Collectors.toList());
             List<SystemTaskDto> taskDtos = systemTaskMapper.selectAllSystemTask();
@@ -60,7 +66,7 @@ public class DevInsightController {
             demandDtosMap = demandDtos.stream().peek(demand -> demand.setId(StrUtil.subSuf(demand.getId(), demand.getId().length() - 7)))
                     .collect(Collectors.toMap(SystemDemandDto::getId, SystemDemandDto::getTitle, (v1, v2) -> v1));
             repos.forEach(repo ->{
-                List<DevInsightCommit> allCommits = devInsightService.getRepoAllCommit(repo.getRepoId());
+                List<ResponseCommit> allCommits = devInsightService.getRepoAllCommit(repo.getRepoId());
                 //整体信息处理
                 repo.setCommits(allCommits);
                 //处理commit信息
@@ -69,11 +75,11 @@ public class DevInsightController {
                 repo.calculateRepoInfo();
                 //个人信息处理
                 repo.calculatePersonInfo();
-                repo.getPersonInfos().forEach(DevInsightPersonInfo::afterCalculate);
+                repo.getPersonInfos().forEach(PersonInfo::afterCalculate);
             });
 
             //处理项目名
-            Map<String, String> projectIdNameMap = projects.stream().collect(Collectors.toMap(DevInsightProject::getId, DevInsightProject::getName, (v1, v2) -> v1));
+            Map<String, String> projectIdNameMap = projects.stream().collect(Collectors.toMap(ResponseProject::getId, ResponseProject::getName, (v1, v2) -> v1));
             repos.forEach(repo -> repo.setProjectName(projectIdNameMap.get(repo.getProjectId())));
             // repos.forEach(e -> log.debug("{}", e));
 
@@ -86,9 +92,9 @@ public class DevInsightController {
                 excelWriter.write(repos, writeSheet);
                 for (int i = 0; i < repos.size(); i++) {
                     RepoInfo repoInfo = repos.get(i);
-                    List<DevInsightPersonInfo> personInfos = repoInfo.getPersonInfos();
+                    List<PersonInfo> personInfos = repoInfo.getPersonInfos();
                     int sheetNo = i + 1;
-                    WriteSheet writeSheet2 = EasyExcelFactory.writerSheet(sheetNo, repoInfo.getProjectName()).head(DevInsightPersonInfo.class).build();
+                    WriteSheet writeSheet2 = EasyExcelFactory.writerSheet(sheetNo, repoInfo.getProjectName()).head(PersonInfo.class).build();
                     excelWriter.write(personInfos, writeSheet2);
                 }
             }
@@ -111,7 +117,7 @@ public class DevInsightController {
      * @param targetProjectId 需要查询的目标根节点project
      * @return 在 targetProjectId这个根节点的project下，所有的repo
      */
-    public List<DevInsightRepository> filter(List<DevInsightRepository> source, String targetProjectId) {
+    public List<ResponseRepository> filter(List<ResponseRepository> source, String targetProjectId) {
         return null;
     }
 

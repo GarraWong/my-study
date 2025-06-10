@@ -72,8 +72,8 @@ public class DevInsightUtil {
             if (response.isSuccessful() && response.body() != null) {
                 // 打印响应体内容
                 String result = response.body().string();
-                log.info("请求成功，响应体：{}", result);
-                log.info("请求成功，请求体：{}", JSON.toJSONString(param));
+                log.debug("请求成功，响应体：{}", result);
+                log.debug("请求成功，请求体：{}", JSON.toJSONString(param));
                 return JSONObject.parse(result);
             } else {
                 log.error("请求失败，状态码：{}", response.code());

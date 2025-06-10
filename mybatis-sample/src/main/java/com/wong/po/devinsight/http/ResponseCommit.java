@@ -1,17 +1,17 @@
-package com.wong.po.devinsight;
+package com.wong.po.devinsight.http;
 
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 /**
- * 这是类的描述 补充它
+ * http请求思码逸-commit-返回结果
  *
  * @author : Wym's Code coding MacBook pro 2020 Silicon
  * @date : 2025/6/4 16:04
  */
 @Data
-public class DevInsightCommit {
+public class ResponseCommit {
 
     private String hash;
     private String authorEmail;

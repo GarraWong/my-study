@@ -2,7 +2,7 @@ package com.wong.service;
 
 import cn.hutool.core.collection.CollUtil;
 import com.alibaba.fastjson2.JSONObject;
-import com.wong.po.devinsight.DevInsightCommit;
+import com.wong.po.devinsight.http.ResponseCommit;
 import com.wong.utils.DevInsightUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
@@ -26,9 +26,9 @@ public class DevInsightServiceImpl implements DevInsightService {
     private DevInsightUtil util;
 
     @Override
-    public List<DevInsightCommit> getRepoAllCommit(String repoId) {
-        List<DevInsightCommit> allCommits = Lists.newArrayList();
-        List<DevInsightCommit> commits;
+    public List<ResponseCommit> getRepoAllCommit(String repoId) {
+        List<ResponseCommit> allCommits = Lists.newArrayList();
+        List<ResponseCommit> commits;
         int page = 1;
         do  {
             TreeMap<String, Object> searchCommitParam = new TreeMap<>();
@@ -39,7 +39,7 @@ public class DevInsightServiceImpl implements DevInsightService {
             searchCommitParam.put("authorTimestampTo", "2025-06-30T23:59:59.999Z");
             JSONObject commitResult = util.invoke(searchCommitParam, "/repo/commit/list");
             if (util.judgeSuccess(commitResult)) {
-                commits = util.getDataList(commitResult, DevInsightCommit.class);
+                commits = util.getDataList(commitResult, ResponseCommit.class);
                 allCommits.addAll(commits);
 
             } else {
