@@ -1,4 +1,4 @@
-package com.wong.po;
+package com.wong.po.devinsight;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.BooleanUtil;
@@ -32,12 +32,12 @@ import static java.util.stream.Collectors.groupingBy;
 @Slf4j
 @HeadFontStyle(fontName = "等线", fontHeightInPoints = 10)
 @ContentFontStyle(fontHeightInPoints = 10)
-@HeadStyle(wrapped = BooleanEnum.FALSE)
 @HeadRowHeight(80)
 public class RepoInfo {
     @ExcelProperty("仓库ID")
     private String repoId;
     @ExcelProperty("仓库地址")
+    @ColumnWidth(42)
     private String repoUrl;
     @ExcelProperty("仓库名")
     @ColumnWidth(20)
@@ -45,7 +45,7 @@ public class RepoInfo {
     @ExcelProperty("项目id")
     private String projectId;
     @ExcelProperty("项目名")
-    @ColumnWidth(20)
+    @ColumnWidth(25)
     private String projectName;
     /**
      * 全部的commit信息
@@ -60,60 +60,69 @@ public class RepoInfo {
 
     //增加行
     @ExcelProperty("总增加行")
+    @ColumnWidth(10)
     private Integer insertions;
     //删减行
     @ExcelProperty("总删减行")
+    @ColumnWidth(7)
     private Integer deletions;
     //空白行
     @ExcelProperty("总空白行")
+    @ColumnWidth(6)
     private Integer blanks;
     //非空非注行
     @ExcelProperty("总非空非注行")
+    @ColumnWidth(7)
     private Integer nbncs;
     //代码当量
     @ExcelProperty("总代码当量")
+    @ColumnWidth(7)
     private BigDecimal devEquivalent;
 
 
     //总计数
     @ExcelProperty("总提交数")
+    @ColumnWidth(8)
     private Long totalCount;
     //merge/revert提交数
     @ExcelProperty("merge/revert提交数")
-    @ColumnWidth(20)
+    @ColumnWidth(7)
     private Long mergeRevertCount;
     //代码提交数
     @ExcelProperty("代码提交数")
-    @ColumnWidth(12)
+    @ColumnWidth(6)
     private Long excludeMergeRevertCount;
     //LOC提交比例 代码提交数/总数
     @ExcelProperty("LOC提交比例(=代码提交数/总提交数,反映了开发人员写的代码占了全部提交数的比例)")
     @HeadStyle(wrapped = BooleanEnum.TRUE)
-    @ColumnWidth(20)
+    @ColumnWidth(8)
     private BigDecimal locRate;
     //规则提交数
     @ExcelProperty("规则提交数")
+    @ColumnWidth(6)
     private Long obeyRuleCount;
     //遵循规则提交比例 规则提交数/代码提交数
     @ExcelProperty("遵循提交比例(=规则提交数/代码提交数,反映开发人员为代码里多少多少比例是被绕过了限制)")
     @HeadStyle(wrapped = BooleanEnum.TRUE)
-    @ColumnWidth(20)
+    @ColumnWidth(11)
     private BigDecimal obeyRate;
     //有效提交
-    @ExcelProperty("有效提交数")
+    @ExcelProperty("有效提交数(TAPD非0)")
+    @ColumnWidth(8)
     private Long obeyEffectiveCount;
     //有效规则比例 有效提交/规则提交数
     @ExcelProperty("有效规则比例(=有效提交/规则提交数,反映在遵循了推广规则的提交里，有多少比例是绑定了TAPD能够溯源)")
     @HeadStyle(wrapped = BooleanEnum.TRUE)
-    @ColumnWidth(20)
+    @ColumnWidth(12)
     private BigDecimal effectiveRate;
     //绝对有效提交比例 有效提交/代码提交数
     @ExcelProperty("绝对有效提交比例(=有效提交/代码提交数,反映在开发人员写的代码里，有多少比例是绑定了TAPD能够溯源)")
     @HeadStyle(wrapped = BooleanEnum.TRUE)
-    @ColumnWidth(20)
+    @ColumnWidth(10)
     private BigDecimal absEffectiveRate;
     //无效提交
-    @ExcelProperty("无效提交数")
+    @ExcelProperty("无效提交数(TAPD为0)")
+    @ColumnWidth(7)
     private Long obeyNonEffectiveCount;
 
     public RepoInfo(DevInsightRepository repository) {
@@ -121,23 +130,6 @@ public class RepoInfo {
         this.repoName = repository.getName();
         this.repoUrl = repository.getGitUrl();
         this.projectId = repository.getProjectId();
-    }
-
-    @Override
-    public String toString() {
-        return "RepoInfo{" +
-                "repoUrl='" + repoUrl + '\'' +
-                ", 总计数=" + totalCount +
-                ", merge/revert提交数=" + mergeRevertCount +
-                ", 代码提交数=" + excludeMergeRevertCount +
-                ", 遵循规则=" + obeyRuleCount +
-                ", 有效=" + obeyEffectiveCount +
-                ", 无效=" + obeyNonEffectiveCount +
-                ", LOC提交比例=" + locRate +
-                ", 遵循规则提交比例=" + obeyRate +
-                ", 有效规则比例=" + effectiveRate +
-                ", 绝对有效提交比例=" + absEffectiveRate +
-                '}';
     }
 
     /**
@@ -198,7 +190,7 @@ public class RepoInfo {
                 personInfo.setCommits(personCommits);
                 personInfo.setTotalCount(CollUtil.isNotEmpty(personCommits) ? personCommits.size() : 0L);
                 if (CollUtil.isNotEmpty(personCommits)) {
-                    personInfo.setTempTaskIds(personCommits.stream().filter(sCommit -> BooleanUtil.isTrue(sCommit.getObeyTaskId())).map(DevInsightCommit::getTaskId).collect(Collectors.toList()));
+                    personInfo.setTempIds(personCommits.stream().filter(sCommit -> BooleanUtil.isTrue(sCommit.getObeyTaskId())).map(DevInsightCommit::getTaskId).collect(Collectors.toList()));
                     List<String> commitMessages = personCommits.stream().map(DevInsightCommit::getTitle).collect(Collectors.toList());
                     personInfo.setMergeRevertCount(commitMessages.stream().filter(e -> ReUtil.isMatch("^Merge .+", e) || ReUtil.isMatch("^Revert .+", e)).count());
                     personInfo.setExcludeMergeRevertCount(personInfo.getTotalCount() - personInfo.getMergeRevertCount());
