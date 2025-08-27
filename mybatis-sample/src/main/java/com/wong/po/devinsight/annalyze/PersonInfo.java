@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 这是类的描述 补充它
+ * 个人详细信息统计
  *
  * @author : Wym's Code coding MacBook pro 2020 Silicon
  * @date : 2025/6/9 15:20
@@ -35,10 +35,13 @@ public class PersonInfo extends AbstractDevinSightAnnalyze{
      */
     @ExcelIgnore
     private List<ResponseCommit> commits;
+    /**
+     * 临时存储用的id，不一定是任务id，可能是需求id
+     */
     @ExcelIgnore
     private List<String> tempIds;
     /**
-     * tapd任务id，通过tempTaskIds进行计算
+     * tapd解析字符串用\n拼接，通过tempTaskIds进行计算
      */
     @ExcelProperty("id去重信息")
     @ContentStyle(wrapped = BooleanEnum.TRUE)

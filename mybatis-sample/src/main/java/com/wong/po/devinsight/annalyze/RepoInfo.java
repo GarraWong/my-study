@@ -125,6 +125,7 @@ public class RepoInfo extends AbstractDevinSightAnnalyze{
                 personInfo.setCommits(personCommits);
                 personInfo.setTotalCount(CollUtil.isNotEmpty(personCommits) ? personCommits.size() : 0L);
                 if (CollUtil.isNotEmpty(personCommits)) {
+                    //存储临时信息，通过obeyTaskId判断
                     personInfo.setTempIds(personCommits.stream().filter(sCommit -> BooleanUtil.isTrue(sCommit.getObeyTaskId())).map(ResponseCommit::getTaskId).collect(Collectors.toList()));
                     List<String> commitMessages = personCommits.stream().map(ResponseCommit::getTitle).collect(Collectors.toList());
                     personInfo.setMergeRevertCount(commitMessages.stream().filter(e -> ReUtil.isMatch("^Merge .+", e) || ReUtil.isMatch("^Revert .+", e)).count());
@@ -155,11 +156,8 @@ public class RepoInfo extends AbstractDevinSightAnnalyze{
                 this.personInfos.add(personInfo);
             }
 
-
         });
 
-
     }
-
 
 }
